@@ -10,9 +10,25 @@ import { Dashboard } from '../pages/dashboard/Dashboard'
 import { Login } from '../pages/login/Login'
 import { Clientes } from '../pages/clientes/Clientes'
 import { Register } from '../pages/register/Register'
+import { DashLayout } from '../layout/dashboard/Dashboard'
+import { GetToken } from '../utils/useStorage'
+import { Children, ReactNode } from 'react'
 
 const DashboardLayout = () => {
-  return <Outlet />
+  return (
+    <DashLayout>
+      <Outlet />
+    </DashLayout>
+  )
+}
+
+interface ProtectedType {
+  children: ReactNode
+}
+
+const Protected: React.FC<ProtectedType> = ({ children }) => {
+  const isAuthenticated = GetToken('token')
+  return isAuthenticated ? children : <Navigate to="/login" replace />
 }
 
 const router = createBrowserRouter([
@@ -30,7 +46,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashboardLayout />,
+    element: (
+      <Protected>
+        <DashboardLayout />
+      </Protected>
+    ),
     errorElement: <Error />,
     children: [
       {

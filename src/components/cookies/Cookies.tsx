@@ -9,7 +9,7 @@ export const Cookies = () => {
   useEffect(() => {
     if (
       document.cookie.includes(
-        'cookies=usuario aceitou os termos de privacidade!',
+        'cookies=o usuario concordou com os termos de privacidade',
       )
     ) {
       setAceito(true)
@@ -26,6 +26,7 @@ export const Cookies = () => {
       setAceito(true)
     }
   }
+
   return (
     <>
       {!aceito && (
