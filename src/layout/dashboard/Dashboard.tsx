@@ -115,7 +115,7 @@ export const DashLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <LayoutContext.Provider value={{ userData }}>
       <SLayout>
-        <Sidebar />
+        <Sidebar id={userData?.id} />
         <SHeader>
           <HeaderDashboard />
           <SMain>{children}</SMain>

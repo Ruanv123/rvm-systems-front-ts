@@ -68,7 +68,7 @@ export const Register = () => {
                 type="text"
               />
               {errors.name && (
-                <span style={{ color: 'red' }}>Este campo é obrigatório</span>
+                <p style={{ color: 'red' }}>Este campo é obrigatório</p>
               )}
             </div>
             <div>
@@ -79,7 +79,7 @@ export const Register = () => {
                 type="email"
               />
               {errors.email && (
-                <span style={{ color: 'red' }}>Este campo é obrigatório</span>
+                <p style={{ color: 'red' }}>Este campo é obrigatório</p>
               )}
             </div>
             <div>
@@ -87,6 +87,7 @@ export const Register = () => {
               <Input
                 type="text"
                 placeholder="(00) 0000-0000"
+                maxLength={11}
                 {...register('telefone', { required: true })}
                 onChange={(event) => {
                   const valor = event.target.value
@@ -96,7 +97,7 @@ export const Register = () => {
                 }}
               />
               {errors.telefone && (
-                <span style={{ color: 'red' }}>Este campo é obrigatório</span>
+                <p style={{ color: 'red' }}>Este campo é obrigatório</p>
               )}
             </div>
             <div>
@@ -107,7 +108,7 @@ export const Register = () => {
                 type="password"
               />
               {errors.password && (
-                <span style={{ color: 'red' }}>Este campo é obrigatório</span>
+                <p style={{ color: 'red' }}>Este campo é obrigatório</p>
               )}
             </div>
             <div>

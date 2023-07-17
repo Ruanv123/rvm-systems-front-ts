@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   padding: 10px 20px;
   width: 100%;
   border-bottom: 1px solid ${colors.gray[180]};
+  background-color: ${colors.white};
 `
 
 export const LContainer = styled.div``

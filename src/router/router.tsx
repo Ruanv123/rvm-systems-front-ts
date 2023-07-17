@@ -1,18 +1,24 @@
+import { ReactNode } from 'react'
 import {
   createBrowserRouter,
   Navigate,
   Outlet,
   RouterProvider,
 } from 'react-router-dom'
+
+import { GetToken } from '../utils/useStorage'
+import { DashLayout } from '../layout/dashboard/Dashboard'
+
 import { Home } from '../pages/home/Home'
 import { Error } from '../pages/error/Error'
 import { Dashboard } from '../pages/dashboard/Dashboard'
 import { Login } from '../pages/login/Login'
 import { Clientes } from '../pages/clientes/Clientes'
 import { Register } from '../pages/register/Register'
-import { DashLayout } from '../layout/dashboard/Dashboard'
-import { GetToken } from '../utils/useStorage'
-import { Children, ReactNode } from 'react'
+import { SendResetEmail } from '../pages/sendResetPass/SendResetEmail'
+import { ResetPassword } from '../pages/resetPass/ResetPassword'
+import { Produtos } from '../pages/produtos/Produtos'
+import { SettingsPage } from '../pages/settings/Settings'
 
 const DashboardLayout = () => {
   return (
@@ -45,6 +51,14 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
+    path: '/reset-email',
+    element: <SendResetEmail />,
+  },
+  {
+    path: '/user/reset-pass',
+    element: <ResetPassword />,
+  },
+  {
     path: '/dashboard',
     element: (
       <Protected>
@@ -60,6 +74,18 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/clientes',
         element: <Clientes />,
+      },
+      {
+        path: '/dashboard/empresas',
+        element: <Clientes />,
+      },
+      {
+        path: '/dashboard/produtos',
+        element: <Produtos />,
+      },
+      {
+        path: '/dashboard/settings/:id',
+        element: <SettingsPage />,
       },
     ],
   },

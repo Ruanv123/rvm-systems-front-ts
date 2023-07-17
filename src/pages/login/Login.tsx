@@ -49,7 +49,11 @@ export const Login = () => {
                 type="email"
                 placeholder="johndoe@domain.com"
               />
-              {errors.email && <p>Preencha o campo</p>}
+              {errors.email && (
+                <p style={{ color: 'red', marginBottom: '10px' }}>
+                  Preencha o campo
+                </p>
+              )}
             </div>
             <div>
               <S.Label>Password:</S.Label>
@@ -58,7 +62,11 @@ export const Login = () => {
                 type="password"
                 placeholder="******"
               />
-              {errors.password && <p>Preencha o campo</p>}
+              {errors.password && (
+                <p style={{ color: 'red', marginBottom: '10px' }}>
+                  Preencha o campo
+                </p>
+              )}
             </div>
           </S.FormControl>
           <S.ResetPass>

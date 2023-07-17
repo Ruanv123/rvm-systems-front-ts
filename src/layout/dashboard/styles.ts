@@ -2,6 +2,7 @@ import { styled } from 'styled-components'
 
 export const SLayout = styled.div`
   display: flex;
+  background-color: #fafcfe;
 `
 
 export const SMain = styled.main`
