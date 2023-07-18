@@ -1,15 +1,16 @@
 import { ButtonComponent } from './styles'
 
 interface ButtonProps {
-  text: string
+  size: number | string
   type: 'button' | 'reset' | 'submit'
+  text: string
   onClick?: () => void
 }
 
-export const Button = ({ text, type, onClick }: ButtonProps) => {
+export const Button = ({ text, type, onClick, size }: ButtonProps) => {
   return (
     <>
-      <ButtonComponent type={type} onClick={onClick}>
+      <ButtonComponent type={type} onClick={onClick} size={size}>
         {text}
       </ButtonComponent>
     </>

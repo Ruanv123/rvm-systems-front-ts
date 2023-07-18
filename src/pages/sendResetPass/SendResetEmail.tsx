@@ -59,7 +59,7 @@ export const SendResetEmail = () => {
               )}
             </S.FormContainer>
           </S.FormControl>
-          <Button text="Enviar email" type="submit" />
+          <Button text="Enviar email" type="submit" size={320} />
         </S.Form>
       </S.Container>
       <ToastContainer

@@ -19,6 +19,8 @@ import { SendResetEmail } from '../pages/sendResetPass/SendResetEmail'
 import { ResetPassword } from '../pages/resetPass/ResetPassword'
 import { Produtos } from '../pages/produtos/Produtos'
 import { SettingsPage } from '../pages/settings/Settings'
+import { Financas } from '../pages/financas/Financas'
+import { Funcionarios } from '../pages/funcionarios/Funcionarios'
 
 const DashboardLayout = () => {
   return (
@@ -86,6 +88,14 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/settings/:id',
         element: <SettingsPage />,
+      },
+      {
+        path: '/dashboard/financas',
+        element: <Financas />,
+      },
+      {
+        path: '/dashboard/funcionarios',
+        element: <Funcionarios />,
       },
     ],
   },

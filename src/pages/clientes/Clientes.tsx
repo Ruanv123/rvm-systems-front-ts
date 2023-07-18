@@ -1,3 +1,9 @@
+import * as S from './styles'
+
 export const Clientes = () => {
-  return <div>Clientes</div>
+  return (
+    <>
+      <S.Titulo>Clientes</S.Titulo>
+    </>
+  )
 }

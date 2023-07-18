@@ -2,6 +2,7 @@ import * as S from './styles'
 import { Avatar } from '../avatar/Avatar'
 import Logo from '../../assets/logo.png'
 import { useUser } from '../../layout/dashboard/Dashboard'
+import { GoBell } from 'react-icons/go'
 
 export const HeaderDashboard = () => {
   const { userData } = useUser()
@@ -15,6 +16,7 @@ export const HeaderDashboard = () => {
         </S.LinkA>
       </S.LContainer>
       <S.RContainer>
+        <GoBell size={22} />
         <Avatar size={40} alt="avatar" src={avatarUrl} />
         <S.AvatarLabel>{name}</S.AvatarLabel>
       </S.RContainer>

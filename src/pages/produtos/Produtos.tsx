@@ -1,7 +1,9 @@
+import * as S from './styles'
+
 export const Produtos = () => {
   return (
     <>
-      <h1>Produtos</h1>
+      <S.Titulo>Produtos</S.Titulo>
     </>
   )
 }

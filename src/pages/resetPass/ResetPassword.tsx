@@ -88,7 +88,7 @@ export const ResetPassword = () => {
             </S.FormContainer>
             {error && <p>{error}</p>}
           </S.FormControl>
-          <Button type="submit" text="Alterar Senha" />
+          <Button type="submit" text="Alterar Senha" size={320} />
         </S.Form>
       </S.Container>
       <ToastContainer

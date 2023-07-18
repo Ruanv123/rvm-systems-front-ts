@@ -5,15 +5,11 @@ import { useState } from 'react'
 import LogoNT from '../../assets/logoNT.svg' */
 
 import { GoHome } from 'react-icons/go'
-import {
-  BsArrowRightSquare,
-  BsArrowLeftSquare,
-  BsBox,
-  BsGraphUpArrow,
-} from 'react-icons/bs'
+import { BsArrowRightSquare, BsArrowLeftSquare, BsBox } from 'react-icons/bs'
 import { MdOutlineAnalytics } from 'react-icons/md'
-import { PiUsers, PiGear } from 'react-icons/pi'
+import { PiUsers, PiGear, PiUserFocusBold } from 'react-icons/pi'
 import { IoLogOutOutline } from 'react-icons/io5'
+import { TbMoneybag } from 'react-icons/tb'
 import { useNavigate } from 'react-router-dom'
 
 interface SidebarProps {
@@ -54,30 +50,36 @@ export const Sidebar = (id: SidebarProps) => {
             )}
           </S.Logo> */}
           <S.Divider />
-          <S.LinkContainer to="/" isopen={sidebarOpen}>
+          <S.LinkContainer to="/dashboard/" isopen={sidebarOpen}>
             <GoHome size={30} />
             {!sidebarOpen && <span>Home</span>}
           </S.LinkContainer>
 
-          <S.LinkContainer to="/" isopen={sidebarOpen}>
+          <S.LinkContainer to="/dashboard/" isopen={sidebarOpen}>
             <MdOutlineAnalytics size={30} />
             {!sidebarOpen && <span>Relatórios</span>}
           </S.LinkContainer>
 
-          <S.LinkContainer to="/" isopen={sidebarOpen}>
+          <S.LinkContainer to="/dashboard/clientes" isopen={sidebarOpen}>
             <PiUsers size={30} />
             {!sidebarOpen && <span>Clientes</span>}
           </S.LinkContainer>
 
-          <S.LinkContainer to="/" isopen={sidebarOpen}>
+          <S.LinkContainer to="/dashboard/produtos" isopen={sidebarOpen}>
             <BsBox size={30} />
             {!sidebarOpen && <span>Products</span>}
           </S.LinkContainer>
 
-          <S.LinkContainer to="/" isopen={sidebarOpen}>
-            <BsGraphUpArrow size={30} />
-            {!sidebarOpen && <span>Analytics</span>}
+          <S.LinkContainer to="/dashboard/financas" isopen={sidebarOpen}>
+            <TbMoneybag size={30} />
+            {!sidebarOpen && <span>Finanças</span>}
           </S.LinkContainer>
+
+          <S.LinkContainer to="/dashboard/funcionarios" isopen={sidebarOpen}>
+            <PiUserFocusBold size={30} />
+            {!sidebarOpen && <span>Funcionários</span>}
+          </S.LinkContainer>
+
           <S.Divider />
         </S.Content>
         <S.Footer>
