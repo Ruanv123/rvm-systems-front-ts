@@ -1,18 +1,42 @@
+import { ReactNode } from 'react'
 import {
   createBrowserRouter,
   Navigate,
   Outlet,
   RouterProvider,
 } from 'react-router-dom'
+
+import { GetToken } from '../utils/useStorage'
+import { DashLayout } from '../layout/dashboard/Dashboard'
+
 import { Home } from '../pages/home/Home'
 import { Error } from '../pages/error/Error'
 import { Dashboard } from '../pages/dashboard/Dashboard'
 import { Login } from '../pages/login/Login'
 import { Clientes } from '../pages/clientes/Clientes'
 import { Register } from '../pages/register/Register'
+import { SendResetEmail } from '../pages/sendResetPass/SendResetEmail'
+import { ResetPassword } from '../pages/resetPass/ResetPassword'
+import { Produtos } from '../pages/produtos/Produtos'
+import { SettingsPage } from '../pages/settings/Settings'
+import { Financas } from '../pages/financas/Financas'
+import { Funcionarios } from '../pages/funcionarios/Funcionarios'
 
 const DashboardLayout = () => {
-  return <Outlet />
+  return (
+    <DashLayout>
+      <Outlet />
+    </DashLayout>
+  )
+}
+
+interface ProtectedType {
+  children: ReactNode
+}
+
+const Protected: React.FC<ProtectedType> = ({ children }) => {
+  const isAuthenticated = GetToken('token')
+  return isAuthenticated ? children : <Navigate to="/login" replace />
 }
 
 const router = createBrowserRouter([
@@ -29,8 +53,20 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
+    path: '/reset-email',
+    element: <SendResetEmail />,
+  },
+  {
+    path: '/user/reset-pass',
+    element: <ResetPassword />,
+  },
+  {
     path: '/dashboard',
-    element: <DashboardLayout />,
+    element: (
+      <Protected>
+        <DashboardLayout />
+      </Protected>
+    ),
     errorElement: <Error />,
     children: [
       {
@@ -40,6 +76,26 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/clientes',
         element: <Clientes />,
+      },
+      {
+        path: '/dashboard/empresas',
+        element: <Clientes />,
+      },
+      {
+        path: '/dashboard/produtos',
+        element: <Produtos />,
+      },
+      {
+        path: '/dashboard/settings/:id',
+        element: <SettingsPage />,
+      },
+      {
+        path: '/dashboard/financas',
+        element: <Financas />,
+      },
+      {
+        path: '/dashboard/funcionarios',
+        element: <Funcionarios />,
       },
     ],
   },
