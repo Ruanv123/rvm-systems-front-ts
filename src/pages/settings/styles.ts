@@ -32,10 +32,11 @@ export const EditForm = styled.div`
   padding: 50px;
 `
 
-export const Div = styled.div`
+export const Div = styled.form`
   display: flex;
   align-items: center;
   gap: 30px;
+  margin-top: 32px;
 `
 
 export const Divider = styled.div`
@@ -64,4 +65,9 @@ export const TextTitle = styled.p`
 `
 export const Spacing = styled.div`
   margin: 10px 0px;
+`
+export const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 30px;
 `
