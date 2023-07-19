@@ -14,13 +14,14 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.3s ease-in-out;
 `
 export const ModalContent = styled.div`
   user-select: none;
   background-color: white;
   padding: 30px;
   border-radius: 16px;
-  border: 1px solid ${colors.gray[150]};
+  border: 1px solid ${colors.gray[180]};
   box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.08),
     0px 20px 13px 0px rgba(0, 0, 0, 0.03);
   display: flex;

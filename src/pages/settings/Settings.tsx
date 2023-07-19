@@ -33,19 +33,39 @@ export const SettingsPage = () => {
           <S.Title>Editar Usuario</S.Title>
           <S.Div>
             <div>
-              <Input placeholder="nome" />
-              <Input placeholder="nome" />
-              <Input placeholder="nome" />
+              <label htmlFor="">
+                Nome
+                <Input placeholder="nome" />
+              </label>
+              <label htmlFor="">
+                Email
+                <Input placeholder="Email" />
+              </label>
+              <label htmlFor="">
+                Password
+                <Input placeholder="Password" />
+              </label>
             </div>
             <div>
-              <Input placeholder="nome" />
-              <Input placeholder="nome" />
-              <Input placeholder="nome" />
+              <label htmlFor="">
+                Avatar Url
+                <Input placeholder="Avatar Url" />
+              </label>
+              <label htmlFor="">
+                descrição
+                <Input placeholder="descrição" />
+              </label>
+              <label htmlFor="">
+                Telefone
+                <Input placeholder="Telefone" />
+              </label>
             </div>
           </S.Div>
           <S.Divider />
-          <Button text="Editar" type="button" size={378} />
-          <Button text="Deletar Conta" type="button" size={378} />
+          <S.ButtonWrapper>
+            <Button text="Editar" type="button" size={378} />
+            <Button text="Deletar Conta" type="button" size={378} />
+          </S.ButtonWrapper>
         </S.EditForm>
       </S.Wrapper>
     </>
