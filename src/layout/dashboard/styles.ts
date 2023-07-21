@@ -8,6 +8,8 @@ export const SLayout = styled.div`
 export const SMain = styled.main`
   padding: calc(24px * 2);
   width: 100%;
+  overflow-y: scroll;
+  max-height: 92vh;
 `
 
 export const SHeader = styled.div`

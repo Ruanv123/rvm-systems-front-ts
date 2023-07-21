@@ -22,6 +22,7 @@ export const Financas = () => {
           text="Add plano de contas"
           onClick={openModal}
           size={250}
+          color="#4ADE80"
         />
       </S.Container>
 

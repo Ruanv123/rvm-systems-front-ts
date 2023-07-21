@@ -72,7 +72,7 @@ export const Login = () => {
           <S.ResetPass>
             <S.LinkBack to="/reset-email">Reset Password</S.LinkBack>
           </S.ResetPass>
-          <Button text="Login" type="submit" size={320} />
+          <Button text="Login" type="submit" size={320} color="#3B82F6" />
           <S.Hr />
           <S.Span>
             Não possui uma conta?{' '}

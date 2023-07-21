@@ -19,15 +19,18 @@ import { colors } from '../../styles/tokens/colors'
 `
  */
 
-export const ButtonComponent = styled.button<{ size: number | string }>`
-  ${({ size }) => css`
+export const ButtonComponent = styled.button<{
+  size: number | string
+  color: string
+}>`
+  ${({ size, color }) => css`
     color: ${colors.white};
     border-radius: 6px;
     box-shadow: 0px 1px 2px rgba(27, 36, 44, 0.12);
     padding: 10px 16px;
     max-width: ${Number(size) ? size + 'px' : size};
     width: 100%;
-    background-color: ${colors.blue[600]};
+    background-color: ${color /* ?  colors.green[500]  : color */};
     font-weight: 700;
     user-select: none;
     transition: all 0.3s ease-in-out;

@@ -23,17 +23,7 @@ export const Clientes = () => {
             <S.TableHCell>Ação</S.TableHCell>
           </S.TableRow>
         </thead>
-        <tbody>
-          <S.TableRow>
-            <S.TableCell>
-              <input type="checkbox" />
-            </S.TableCell>
-            <S.TableCell>1</S.TableCell>
-            <S.TableCell>Ruan Victor</S.TableCell>
-            <S.TableCell>ruanvictormr@gmail.com</S.TableCell>
-            <S.TableCell>deletar</S.TableCell>
-          </S.TableRow>
-        </tbody>
+        <tbody></tbody>
       </S.Table>
     </>
   )

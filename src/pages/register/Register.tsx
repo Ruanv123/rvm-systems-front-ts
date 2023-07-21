@@ -124,7 +124,7 @@ export const Register = () => {
               {error && <p>{error}</p>}
             </div>
           </S.FormControl>
-          <Button text="Register" type="submit" size={320} />
+          <Button text="Register" type="submit" size={320} color="#3B82F6" />
           <S.Hr />
           <S.Span>
             Já possui uma conta?

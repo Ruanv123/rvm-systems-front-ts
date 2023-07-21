@@ -51,6 +51,7 @@ export const Funcionarios = () => {
           Authorization: `Bearer ${token}`,
         },
       })
+      window.location.reload()
       toast.success(`Funcionario deletado com sucesso!`)
     } catch (error) {
       toast.error('ocorreu um erro ao deletar usuario' + error)
@@ -65,15 +66,20 @@ export const Funcionarios = () => {
     <>
       <S.Container>
         <S.Titulo>Funcionarios</S.Titulo>
-        <Button text="Add funcionário" size={150} type="button" />
+        <Button
+          text="Add funcionário"
+          size={150}
+          type="button"
+          color="#22C55E"
+        />
       </S.Container>
 
       <S.Table>
         <thead>
           <S.TableRow>
-            {/* <S.TableHCell>
-              <input type="checkbox" />
-            </S.TableHCell> */}
+            <S.TableHCell>
+              <input type="checkbox" style={{ cursor: 'pointer' }} />
+            </S.TableHCell>
             <S.TableHCell>Id</S.TableHCell>
             <S.TableHCell>Nome</S.TableHCell>
             <S.TableHCell>Email</S.TableHCell>
@@ -87,10 +93,10 @@ export const Funcionarios = () => {
         <tbody>
           {users.map((user) => (
             <S.TableRow key={user.id}>
-              {/* <S.TableCell>
-                <input type="checkbox" />
-              </S.TableCell> */}
-              <S.TableCell key={user.id}>{user.id}</S.TableCell>
+              <S.TableCell>
+                <input type="checkbox" style={{ cursor: 'pointer' }} />
+              </S.TableCell>
+              <S.TableCell>{user.id}</S.TableCell>
               <S.TableCell>{user.name}</S.TableCell>
               <S.TableCell>{user.email}</S.TableCell>
               <S.TableCell>{user.telefone}</S.TableCell>
