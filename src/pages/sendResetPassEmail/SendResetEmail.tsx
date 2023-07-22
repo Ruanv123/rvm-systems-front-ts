@@ -6,12 +6,15 @@ import { useForm } from 'react-hook-form'
 import { Button } from '../../components/button/Button'
 import { Input } from '../../components/input/Input'
 import { API_BASE_URL } from '../../constants/Constants'
+import { colors } from '../../styles/tokens/colors'
+import { useNavigate } from 'react-router-dom'
 
 interface FormData {
   email: string
 }
 
 export const SendResetEmail = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -27,7 +30,7 @@ export const SendResetEmail = () => {
       const res = response.data
       console.log(res)
       if (res.message !== null) {
-        toast.success('Email enviado com sucesso!')
+        navigate('/reset-email/confirm')
       }
     } catch (error) {
       toast.error(
@@ -59,7 +62,12 @@ export const SendResetEmail = () => {
               )}
             </S.FormContainer>
           </S.FormControl>
-          <Button text="Enviar email" type="submit" size={320} />
+          <Button
+            text="Enviar email"
+            type="submit"
+            size={320}
+            color={`${colors.blue[500]}`}
+          />
         </S.Form>
       </S.Container>
       <ToastContainer

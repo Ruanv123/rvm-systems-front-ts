@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import { ModalF } from '../../components/modals/modalForm/ModalF'
 import { Input } from '../../components/input/Input'
 import { useForm } from 'react-hook-form'
+import { API_BASE_URL_2 } from '../../constants/Constants'
 
 interface Produtos {
   id: string
@@ -57,7 +58,7 @@ export const Produtos = () => {
 
   const handleCreateProduct = async (data: FormData) => {
     try {
-      const response = await axios.post('http://localhost:8050/produto', {
+      const response = await axios.post(`${API_BASE_URL_2}/produto`, {
         nome: data.nome,
         descricao: data.descricao,
         preco: data.preco,
@@ -77,7 +78,7 @@ export const Produtos = () => {
 
   const handleProdutos = async () => {
     try {
-      const res = await axios.get('http://localhost:8050/produtos')
+      const res = await axios.get(`${API_BASE_URL_2}/produtos`)
       const data = res.data
       setProducts(data)
     } catch (error) {
@@ -87,7 +88,7 @@ export const Produtos = () => {
 
   const handleDeleteProducts = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:8050/produto/${id}`)
+      await axios.delete(`${API_BASE_URL_2}/produto/${id}`)
       window.location.reload()
       toast.success('Produto deletado com sucesso!')
     } catch (error) {

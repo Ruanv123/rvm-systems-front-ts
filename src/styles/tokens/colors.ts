@@ -56,6 +56,10 @@ export const colors = {
     900: '#522A79',
   },
 
+  red: {
+    500: '#C53434',
+  },
+
   black: '#000',
   white: '#fff',
 }

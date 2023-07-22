@@ -1,4 +1,5 @@
 import { Button } from '../../components/button/Button'
+import { colors } from '../../styles/tokens/colors'
 import * as S from './styles'
 
 export const Clientes = () => {
@@ -6,7 +7,12 @@ export const Clientes = () => {
     <>
       <S.Container>
         <S.Titulo>Clientes</S.Titulo>
-        <Button type="submit" size={150} text="Add Cliente +" />
+        <Button
+          type="submit"
+          size={150}
+          text="Add Cliente +"
+          color={`${colors.blue[500]}`}
+        />
       </S.Container>
       <S.Table>
         <thead>

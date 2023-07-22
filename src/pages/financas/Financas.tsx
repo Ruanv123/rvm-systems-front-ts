@@ -1,42 +1,29 @@
-import { Button } from '../../components/button/Button'
-import { Input } from '../../components/input/Input'
-import { ModalF } from '../../components/modals/modalForm/ModalF'
+import { Link } from 'react-router-dom'
 import * as S from './styles'
-import { useState } from 'react'
 
 export const Financas = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const openModal = () => {
-    setIsModalOpen(true)
-  }
-  const closeModal = () => {
-    setIsModalOpen(false)
-  }
   return (
     <>
       <S.Container>
         <S.Titulo>Finanças</S.Titulo>
-        <Button
-          type="button"
-          text="Add plano de contas"
-          onClick={openModal}
-          size={250}
-          color="#4ADE80"
-        />
       </S.Container>
-
-      {isModalOpen && (
-        <ModalF onClose={closeModal}>
-          <h1>Modal Teste</h1>
-          <Input placeholder="Nome" />
-          <Input placeholder="Fornecedor" />
-          <select>
-            <option value="despesa">Despesa</option>
-            <option value="receita">Receita</option>
-          </select>
-        </ModalF>
-      )}
+      <S.Content>
+        <S.Container2>
+          <S.LinkCard>
+            <Link to="/dashboard/financas/contas-a-pagar">Contas A Pagar</Link>
+          </S.LinkCard>
+          <S.LinkCard>
+            <Link to="/dashboard/financas/contas-a-receber">
+              Contas A Pagar
+            </Link>
+          </S.LinkCard>
+          <S.LinkCard>
+            <Link to="/dashboard/financas/contas-a-receber">
+              Contas A Pagar
+            </Link>
+          </S.LinkCard>
+        </S.Container2>
+      </S.Content>
     </>
   )
 }

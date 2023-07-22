@@ -83,10 +83,7 @@ export const Sidebar = (id: SidebarProps) => {
           <S.Divider />
         </S.Content>
         <S.Footer>
-          <S.LinkContainer
-            to={`/dashboard/settings/${id}`}
-            isopen={sidebarOpen}
-          >
+          <S.LinkContainer to={`/dashboard/settings/`} isopen={sidebarOpen}>
             <PiGear size={30} />
             {!sidebarOpen && <span>Settings</span>}
           </S.LinkContainer>

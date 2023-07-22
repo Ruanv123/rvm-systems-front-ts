@@ -8,6 +8,7 @@ import { Input } from '../../components/input/Input'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { API_BASE_URL } from '../../constants/Constants'
 import { useForm } from 'react-hook-form'
+import { colors } from '../../styles/tokens/colors'
 
 interface FormData {
   newPassword: string
@@ -45,7 +46,7 @@ export const ResetPassword = () => {
       if (res.data.message !== null) {
         toast.success('Senha alterada com sucesso!')
       }
-      navigate('/login')
+      navigate('/user/reset-pass/confirm')
     } catch (error) {
       toast.error('Ocorreu um error ao tentar mudar a senha: ' + error)
     }
@@ -88,7 +89,12 @@ export const ResetPassword = () => {
             </S.FormContainer>
             {error && <p>{error}</p>}
           </S.FormControl>
-          <Button type="submit" text="Alterar Senha" size={320} />
+          <Button
+            type="submit"
+            text="Alterar Senha"
+            size={320}
+            color={`${colors.blue[500]}`}
+          />
         </S.Form>
       </S.Container>
       <ToastContainer

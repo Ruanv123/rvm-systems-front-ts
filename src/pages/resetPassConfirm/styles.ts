@@ -1,13 +1,11 @@
 import { styled } from 'styled-components'
 import { colors } from '../../styles/tokens/colors'
-import { Link } from 'react-router-dom'
 
 export const Body = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${colors.grayBg};
 `
-
 export const Container = styled.div`
   background-color: ${colors.white};
   position: absolute;
@@ -20,6 +18,7 @@ export const Container = styled.div`
   box-shadow: 0px 2px 2px -1px rgba(27, 36, 44, 0.04),
     0px 2px 8px -1px rgba(27, 36, 44, 0.08);
 `
+
 export const Label = styled.label`
   font-size: 14px;
   margin-top: 12px;
@@ -27,46 +26,25 @@ export const Label = styled.label`
 
 export const Form = styled.form`
   padding: 32px;
-`
-
-export const FormTitle = styled.h1`
-  font-weight: 600;
-  color: ${colors.gray[900]};
-`
-
-export const FormControl = styled.div`
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  /* margin-bottom: 13px; */
-  margin-top: 25px;
-`
-
-export const LinkBack = styled(Link)`
-  color: ${colors.blue[550]};
-`
-
-export const ResetPass = styled.div`
+  max-width: 400px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-`
-
-export const Span = styled.div`
-  color: ${colors.black};
-  margin-top: 8px;
+  flex-direction: column;
   text-align: center;
 `
 
-export const Hr = styled.div`
-  background-color: transparent;
-  color: transparent;
+export const FormTitle = styled.h1`
+  font-size: 24px;
+  font-weight: 600;
+  color: ${colors.gray[900]};
+  margin-top: 5px;
 `
 
-export const Voltar = styled(Link)`
-  color: ${colors.gray[800]};
-  position: absolute;
-  top: 15px;
-  left: 15px;
+export const FormText = styled.h3`
+  font-weight: 500;
+  margin-top: 15px;
+  font-size: 14px;
+  color: ${colors.gray[500]};
+  margin: 10px 0;
+  padding: 5px;
 `

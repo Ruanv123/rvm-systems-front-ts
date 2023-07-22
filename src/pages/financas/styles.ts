@@ -13,27 +13,19 @@ export const Container = styled.div`
   justify-content: space-between;
   margin-bottom: 2rem;
 `
-export const Table = styled.table`
-  border-radius: 6px;
+export const LinkCard = styled.div`
   border: 1px solid ${colors.gray[180]};
-  width: 100%;
-  /* border-collapse: collapse; */
-  border-spacing: 0;
-  overflow: hidden;
-  background-color: ${colors.white};
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 450px;
+  width: 450px;
 `
 
-export const TableRow = styled.tr`
-  border: 1px solid ${colors.gray[180]};
-  padding: 0 16px;
-`
+export const Content = styled.div``
 
-export const TableHCell = styled.th`
-  background-color: #f5f7f9;
-  height: 40px;
-`
-export const TableCell = styled.td`
-  height: 48px;
-  text-align: center;
-  border: 1px solid ${colors.gray[180]};
+export const Container2 = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 30px;
 `

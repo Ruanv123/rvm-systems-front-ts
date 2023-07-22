@@ -5,11 +5,11 @@ import { styled } from 'styled-components'
 export const Body = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: #edeff1;
+  background-color: ${colors.grayBg};
 `
 
 export const Container = styled.div`
-  background-color: #ffffff;
+  background-color: ${colors.white};
   position: absolute;
   top: 50%;
   left: 50%;
@@ -58,7 +58,7 @@ export const Hr = styled.div`
 `
 
 export const Voltar = styled(Link)`
-  color: #333f51;
+  color: ${colors.gray[800]};
   position: absolute;
   top: 15px;
   left: 15px;
