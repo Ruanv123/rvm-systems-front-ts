@@ -2,7 +2,7 @@ import { Button } from '../../components/button/Button'
 import { colors } from '../../styles/tokens/colors'
 import * as S from './styles'
 
-export const Clientes = () => {
+export default function Clientes() {
   return (
     <>
       <S.Container>

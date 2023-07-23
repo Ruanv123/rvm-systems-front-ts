@@ -15,7 +15,7 @@ interface FormData {
   confirmPassword: string
 }
 
-export const ResetPassword = () => {
+export default function ResetPassword() {
   const [error, setError] = useState('')
   const navigate = useNavigate()
   const {

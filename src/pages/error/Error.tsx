@@ -1,4 +1,4 @@
-export const Error = () => {
+export default function Error() {
   return (
     <>
       <p>error</p>

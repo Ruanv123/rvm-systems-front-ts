@@ -10,7 +10,7 @@ import { Contact } from '../../sections/contact/Contact'
 import { Newsletter } from '../../sections/newsletter/Newsletter'
 import { Cookies } from '../../components/cookies/Cookies'
 
-export const Home = () => {
+export default function Home() {
   return (
     <>
       <Header />

@@ -4,6 +4,11 @@ import { colors } from '../../styles/tokens/colors'
 export const Title = styled.h1`
   color: ${colors.gray[800]};
 `
+
+export const Text = styled.p`
+  font-size: 16px;
+  color: ${colors.gray[500]};
+`
 export const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -51,7 +56,7 @@ export const TextN = styled.p`
   text-align: center;
   color: ${colors.gray[400]};
 `
-export const Text = styled.p`
+export const TextCard = styled.p`
   margin: 7px 0px;
   color: ${colors.gray[600]};
   font-weight: 500;

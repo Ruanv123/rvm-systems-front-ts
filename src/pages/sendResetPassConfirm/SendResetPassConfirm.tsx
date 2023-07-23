@@ -2,7 +2,7 @@ import * as S from './styles'
 import { colors } from '../../styles/tokens/colors'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 
-export const SendResetPassConfirm = () => {
+export default function SendResetPassConfirm() {
   return (
     <S.Body>
       <S.Container>

@@ -8,6 +8,7 @@ export const HeaderDashboard = () => {
   const { userData } = useUser()
   const name = userData?.name
   const avatarUrl = userData?.avatar
+
   return (
     <S.Wrapper>
       <S.LContainer>
@@ -17,6 +18,7 @@ export const HeaderDashboard = () => {
       </S.LContainer>
       <S.RContainer>
         <GoBell size={22} />
+
         <Avatar size={40} alt="avatar" src={avatarUrl} />
         <S.AvatarLabel>{name}</S.AvatarLabel>
       </S.RContainer>

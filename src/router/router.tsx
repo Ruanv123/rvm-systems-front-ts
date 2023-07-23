@@ -8,23 +8,24 @@ import {
 
 import { GetToken } from '../utils/useStorage'
 import { DashLayout } from '../layout/dashboard/Dashboard'
-
-import { Home } from '../pages/home/Home'
-import { Error } from '../pages/error/Error'
-import { Dashboard } from '../pages/dashboard/Dashboard'
-import { Login } from '../pages/login/Login'
-import { Clientes } from '../pages/clientes/Clientes'
-import { Register } from '../pages/register/Register'
-import { SendResetEmail } from '../pages/sendResetPassEmail/SendResetEmail'
-import { ResetPassword } from '../pages/resetPass/ResetPassword'
-import { Produtos } from '../pages/produtos/Produtos'
-import { SettingsPage } from '../pages/settings/Settings'
-import { Financas } from '../pages/financas/Financas'
-import { Funcionarios } from '../pages/funcionarios/Funcionarios'
-import { ContasAPagar } from '../pages/contasAPagar/ContasAPagar'
-import { ContasAReceber } from '../pages/contasAReceber/ContasAReceber'
-import { SendResetPassConfirm } from '../pages/sendResetPassConfirm/SendResetPassConfirm'
-import { ResetPassConfirm } from '../pages/resetPassConfirm/ResetPassConfirm'
+import Home from '../pages/home/Home'
+import Register from '../pages/register/Register'
+import Login from '../pages/login/Login'
+import SendResetEmail from '../pages/sendResetPassEmail/SendResetEmail'
+import ResetPassword from '../pages/resetPass/ResetPassword'
+import SendResetPassConfirm from '../pages/sendResetPassConfirm/SendResetPassConfirm'
+import ResetPassConfirm from '../pages/resetPassConfirm/ResetPassConfirm'
+import Error from '../pages/error/Error'
+import Dashboard from '../pages/dashboard/Dashboard'
+import Clientes from '../pages/clientes/Clientes'
+import PontoDigital from '../pages/pontoDigital/PontoDigital'
+import Produtos from '../pages/produtos/Produtos'
+import SettingsPage from '../pages/settings/Settings'
+import Financas from '../pages/financas/Financas'
+import ContasAReceber from '../pages/contasAReceber/ContasAReceber'
+import ContasAPagar from '../pages/contasAPagar/ContasAPagar'
+import Funcionarios from '../pages/funcionarios/Funcionarios'
+import Fornecedor from '../pages/fornecedor/Fornecedor'
 
 const DashboardLayout = () => {
   return (
@@ -90,8 +91,16 @@ const router = createBrowserRouter([
         element: <Clientes />,
       },
       {
+        path: '/dashboard/ponto',
+        element: <PontoDigital />,
+      },
+      {
         path: '/dashboard/empresas',
         element: <Clientes />,
+      },
+      {
+        path: '/dashboard/fornecedor',
+        element: <Fornecedor />,
       },
       {
         path: '/dashboard/produtos',
@@ -121,6 +130,6 @@ const router = createBrowserRouter([
   },
 ])
 
-export const Routes = () => {
+export default function Routes() {
   return <RouterProvider router={router} />
 }

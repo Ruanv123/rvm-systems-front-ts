@@ -13,7 +13,7 @@ interface FormData {
   email: string
 }
 
-export const SendResetEmail = () => {
+export default function SendResetEmail() {
   const navigate = useNavigate()
   const {
     register,

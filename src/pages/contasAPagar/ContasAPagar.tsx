@@ -1,6 +1,6 @@
 import * as S from './styles'
 
-export const ContasAPagar = () => {
+export default function ContasAPagar() {
   return (
     <>
       <S.Voltar to="/dashboard/financas">Voltar</S.Voltar>

@@ -13,7 +13,7 @@ interface FormData {
   password: string
 }
 
-export const Login = () => {
+export default function Login() {
   const {
     register,
     handleSubmit,

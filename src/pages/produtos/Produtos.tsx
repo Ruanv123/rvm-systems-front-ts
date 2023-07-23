@@ -9,7 +9,7 @@ import { Input } from '../../components/input/Input'
 import { useForm } from 'react-hook-form'
 import { API_BASE_URL_2 } from '../../constants/Constants'
 
-interface Produtos {
+interface IProdutos {
   id: string
   nome: string
   descricao: string
@@ -25,7 +25,7 @@ interface Produtos {
   }
 }
 
-interface FormData {
+interface IFormData {
   nome: string
   descricao: string
   preco: string
@@ -39,15 +39,16 @@ interface FormData {
   nomeLoja: string
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Produtos = () => {
-  const [products, setProducts] = useState<Produtos[]>([])
+export default function Produtos() {
+  const [products, setProducts] = useState<IProdutos[]>([])
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>()
+  } = useForm<IFormData>()
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -56,9 +57,9 @@ export const Produtos = () => {
     setIsModalOpen(false)
   }
 
-  const handleCreateProduct = async (data: FormData) => {
+  const handleCreateProduct = async (data: IFormData) => {
     try {
-      const response = await axios.post(`${API_BASE_URL_2}/produto`, {
+      await axios.post(`${API_BASE_URL_2}/produto`, {
         nome: data.nome,
         descricao: data.descricao,
         preco: data.preco,
@@ -69,8 +70,7 @@ export const Produtos = () => {
         nomeLoja: data.nomeLoja,
       })
       toast.success('sucesso ao criar produto!')
-      window.location.reload()
-      console.log(response)
+      setLoading(true)
     } catch (error) {
       toast.error(`ocorreu um error!` + error)
     }
@@ -89,7 +89,7 @@ export const Produtos = () => {
   const handleDeleteProducts = async (id: string) => {
     try {
       await axios.delete(`${API_BASE_URL_2}/produto/${id}`)
-      window.location.reload()
+      setLoading(true)
       toast.success('Produto deletado com sucesso!')
     } catch (error) {
       toast.error('ocorreu um error!' + error)
@@ -98,11 +98,11 @@ export const Produtos = () => {
 
   useEffect(() => {
     handleProdutos()
-  }, [])
+  }, [loading])
 
-  /* if (products.length === 0) {
+  if (products.length === 0) {
     return <p>Nenhum usuario encontrado!</p>
-  } */
+  }
   return (
     <>
       <S.Container>

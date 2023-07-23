@@ -3,7 +3,6 @@ import * as S from './styles'
 import { GetToken } from '../../utils/useStorage'
 import axios from 'axios'
 import { API_BASE_URL } from '../../constants/Constants'
-import { Button } from '../../components/button/Button'
 import { ToastContainer, toast } from 'react-toastify'
 import { BsTrash } from 'react-icons/bs'
 
@@ -20,8 +19,9 @@ interface Users {
   resetCode: string
 }
 
-export const Funcionarios = () => {
+export default function Funcionarios() {
   const [users, setUsers] = useState<Users[]>([])
+  const [loading, setLoading] = useState(false)
 
   const token: string | null = GetToken('token')
 
@@ -42,7 +42,7 @@ export const Funcionarios = () => {
   useEffect(() => {
     handleFetchUsers()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [loading])
 
   const handleDeleteUser = async (id: number) => {
     try {
@@ -51,7 +51,8 @@ export const Funcionarios = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      window.location.reload()
+      setLoading(true)
+      /* window.location.reload() */
       toast.success(`Funcionario deletado com sucesso!`)
     } catch (error) {
       toast.error('ocorreu um erro ao deletar usuario' + error)
@@ -66,12 +67,6 @@ export const Funcionarios = () => {
     <>
       <S.Container>
         <S.Titulo>Funcionarios</S.Titulo>
-        <Button
-          text="Add funcionário"
-          size={150}
-          type="button"
-          color="#22C55E"
-        />
       </S.Container>
 
       <S.Table>

@@ -4,7 +4,7 @@ import { Button } from '../../components/button/Button'
 import { colors } from '../../styles/tokens/colors'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 
-export const ResetPassConfirm = () => {
+export default function ResetPassConfirm() {
   const navigate = useNavigate()
   return (
     <S.Body>

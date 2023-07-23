@@ -16,7 +16,7 @@ interface FormData {
   confirmPassword: string
 }
 
-export const Register = () => {
+export default function Register() {
   const [error, setError] = useState('')
   const navigate = useNavigate()
   const {
