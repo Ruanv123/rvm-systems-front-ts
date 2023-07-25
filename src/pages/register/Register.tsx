@@ -36,7 +36,6 @@ export default function Register() {
         telefone: data.telefone,
         password: data.password,
       })
-      console.log(response.data)
       toast.success('Usuario criado com sucesso!')
       navigate('/login')
     } catch (error) {

@@ -8,6 +8,7 @@ import {
 
 import { GetToken } from '../utils/useStorage'
 import { DashLayout } from '../layout/dashboard/Dashboard'
+// paginas
 import Home from '../pages/home/Home'
 import Register from '../pages/register/Register'
 import Login from '../pages/login/Login'
@@ -26,6 +27,10 @@ import ContasAReceber from '../pages/contasAReceber/ContasAReceber'
 import ContasAPagar from '../pages/contasAPagar/ContasAPagar'
 import Funcionarios from '../pages/funcionarios/Funcionarios'
 import Fornecedor from '../pages/fornecedor/Fornecedor'
+import About from '../pages/about/About'
+import PrivacidadePage from '../pages/privacidade/PrivacidadePage'
+import Career from '../pages/career/Career'
+import ControleDeCaixa from '../pages/controleDeCaixa/ControleDeCaixa'
 
 const DashboardLayout = () => {
   return (
@@ -48,6 +53,18 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
+  },
+  {
+    path: '/about',
+    element: <About />,
+  },
+  {
+    path: '/privacy',
+    element: <PrivacidadePage />,
+  },
+  {
+    path: '/career',
+    element: <Career />,
   },
   {
     path: '/register',
@@ -121,6 +138,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/financas/contas-a-pagar',
         element: <ContasAPagar />,
+      },
+      {
+        path: '/dashboard/financas/controle-de-caixa',
+        element: <ControleDeCaixa />,
       },
       {
         path: '/dashboard/funcionarios',

@@ -28,7 +28,6 @@ export default function SendResetEmail() {
         data,
       )
       const res = response.data
-      console.log(res)
       if (res.message !== null) {
         navigate('/reset-email/confirm')
       }

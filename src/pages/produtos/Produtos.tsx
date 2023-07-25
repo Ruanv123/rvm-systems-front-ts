@@ -6,8 +6,10 @@ import { BsTrash } from 'react-icons/bs'
 import { ToastContainer, toast } from 'react-toastify'
 import { ModalF } from '../../components/modals/modalForm/ModalF'
 import { Input } from '../../components/input/Input'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { API_BASE_URL_2 } from '../../constants/Constants'
+import { SelectForncedor } from '../../components/select/SelectForncedor'
+import { colors } from '../../styles/tokens/colors'
 
 interface IProdutos {
   id: string
@@ -47,6 +49,7 @@ export default function Produtos() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<IFormData>()
 
@@ -103,6 +106,7 @@ export default function Produtos() {
   if (products.length === 0) {
     return <p>Nenhum usuario encontrado!</p>
   }
+
   return (
     <>
       <S.Container>
@@ -112,7 +116,7 @@ export default function Produtos() {
           type="button"
           size={150}
           onClick={openModal}
-          color="#22C55E"
+          color={`${colors.blue[500]}`}
         />
       </S.Container>
       {products.length === 0 ? (
@@ -143,7 +147,7 @@ export default function Produtos() {
                 </S.TableCell>
                 <S.TableCell>{product.nome}</S.TableCell>
                 <S.TableCell>{product.descricao}</S.TableCell>
-                <S.TableCell>{product.preco}</S.TableCell>
+                <S.TableCell>R$ {product.preco}</S.TableCell>
                 {product.imagem === null ? (
                   <S.TableCell>vazio</S.TableCell>
                 ) : (
@@ -166,9 +170,9 @@ export default function Produtos() {
 
       {isModalOpen && (
         <ModalF onClose={closeModal}>
-          <h1>Adcionar Produto</h1>
+          <S.Titulo>Adcionar Produto</S.Titulo>
           <p></p>
-          <form action="" onSubmit={handleSubmit(handleCreateProduct)}>
+          <form onSubmit={handleSubmit(handleCreateProduct)}>
             <label htmlFor="">
               Nome do produto
               <Input
@@ -225,7 +229,7 @@ export default function Produtos() {
               quantidade
               <Input
                 placeholder="quantidade"
-                type="text"
+                type="number"
                 {...register('quantidade', { required: true })}
               />
             </label>
@@ -236,16 +240,22 @@ export default function Produtos() {
             )}
             <label htmlFor="">
               Nome do Fornecedor
-              {/* <Input
-                placeholder="..."
-                type="text"
-                {...register('fornecedorName', { required: true })}
-              /> */}
-              <select {...register('fornecedorName', { required: true })}>
+              {/* <select {...register('fornecedorName', { required: true })}>
                 <option value="tambasa">tambasa</option>
                 <option value="importec">importec</option>
                 <option value="apple">apple</option>
-              </select>
+              </select> */}
+              <Controller
+                name="fornecedorName"
+                control={control}
+                rules={{ required: 'Selecione um fornecedor' }}
+                render={({ field }) => (
+                  <SelectForncedor
+                    value={field.value}
+                    onChange={(value) => field.onChange(value)}
+                  />
+                )}
+              />
             </label>
             {errors.fornecedorName && (
               <p style={{ color: 'red', marginBottom: '10px' }}>
