@@ -77,7 +77,9 @@ export default function Fornecedor() {
         cep: data.cep,
         tipo: data.tipo,
       })
+      setLoading(true)
       toast.success('sucesso ao cadastrar fornecedor')
+      closeModal()
     } catch (error) {
       toast.error('ocorreu um error' + error)
     }
@@ -110,9 +112,6 @@ export default function Fornecedor() {
       </S.Container>
       <S.Table>
         <thead>
-          {/* <S.TableRow>
-          <Input placeholder="pesquisar..." />
-        </S.TableRow> */}
           <S.TableRow>
             <S.TableHCell>
               <input type="checkbox" />
@@ -132,12 +131,19 @@ export default function Fornecedor() {
           {fornecedores.map((fornecedor) => (
             <S.TableRow key={fornecedor.id}>
               <S.TableCell key={fornecedor.id}>
-                <input type="checkbox" style={{ cursor: 'pointer' }} />
+                <input
+                  type="checkbox"
+                  style={{ cursor: 'pointer', margin: '5px' }}
+                />
               </S.TableCell>
               <S.TableCell>{fornecedor.nome}</S.TableCell>
               <S.TableCell>{fornecedor.email}</S.TableCell>
               <S.TableCell>{fornecedor.telefone}</S.TableCell>
-              <S.TableCell>{fornecedor.site}</S.TableCell>
+              {fornecedor.site === null ? (
+                <S.TableCell>vazio</S.TableCell>
+              ) : (
+                <S.TableCell>{fornecedor.site}</S.TableCell>
+              )}
               <S.TableCell>{fornecedor.cnpj}</S.TableCell>
               <S.TableCell>{fornecedor.endereco}</S.TableCell>
               <S.TableCell>{fornecedor.cep}</S.TableCell>
