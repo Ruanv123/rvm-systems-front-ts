@@ -8,12 +8,12 @@ interface IForncedores {
   nome: string
 }
 
-interface SelectForncedorProps {
+interface ISelectForncedorProps {
   value: string
   onChange: (value: string) => void
 }
 
-export const SelectForncedor: React.FC<SelectForncedorProps> = ({
+export const SelectForncedor: React.FC<ISelectForncedorProps> = ({
   value,
   onChange,
 }) => {

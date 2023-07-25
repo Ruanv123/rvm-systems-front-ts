@@ -1,7 +1,11 @@
+import * as S from './styles'
+
 export default function Dashboard() {
   return (
-    <div>
-      <h1>Dashboard Home</h1>
-    </div>
+    <>
+      <S.Container>
+        <S.Titulo>Home</S.Titulo>
+      </S.Container>
+    </>
   )
 }

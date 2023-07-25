@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { API_BASE_URL } from '../../constants/Constants'
 
-interface FormData {
+interface IFormData {
   name: string
   email: string
   telefone: string
@@ -23,9 +23,9 @@ export default function Register() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>()
+  } = useForm<IFormData>()
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: IFormData) => {
     if (data.password !== data.confirmPassword) {
       setError('As senhas não correspondem!')
     }

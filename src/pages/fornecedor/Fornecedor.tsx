@@ -80,6 +80,7 @@ export default function Fornecedor() {
       setLoading(true)
       toast.success('sucesso ao cadastrar fornecedor')
       closeModal()
+      setLoading(false)
     } catch (error) {
       toast.error('ocorreu um error' + error)
     }
@@ -88,6 +89,7 @@ export default function Fornecedor() {
   const handleDeleteFornecedor = async (id: string) => {
     try {
       await axios.delete(`${API_BASE_URL_2}/fornecedor/${id}`)
+      setLoading(true)
       toast.success('fornecedor deletado com sucesso!')
     } catch (error) {
       toast.error('ocorreu um error ao deletar fornecedor' + error)

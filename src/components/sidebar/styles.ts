@@ -3,11 +3,11 @@ import { colors } from '../../styles/tokens/colors'
 import { Link } from 'react-router-dom'
 import { typography } from '../../styles/tokens/typography'
 
-interface SidebarProps {
+interface ISidebarProps {
   isopen: boolean
 }
 
-export const Sidebar = styled.div<SidebarProps>`
+export const Sidebar = styled.div<ISidebarProps>`
   background-color: ${colors.white};
   height: 100vh;
   box-sizing: border-box;
@@ -24,7 +24,7 @@ export const Sidebar = styled.div<SidebarProps>`
   z-index: 999;
 `
 
-export const Button = styled.button<SidebarProps>`
+export const Button = styled.button<ISidebarProps>`
   background-color: transparent;
   border: none;
   padding: 10px 0px;
@@ -51,7 +51,7 @@ export const Content = styled.div`
   flex-direction: column;
 `
 
-export const LinkContainer = styled(Link)<SidebarProps>`
+export const LinkContainer = styled(Link)<ISidebarProps>`
   text-align: center;
   overflow: hidden;
   color: ${colors.gray[800]};
@@ -72,7 +72,7 @@ export const LinkContainer = styled(Link)<SidebarProps>`
   }
 `
 
-export const LinkContainerBtn = styled.button<SidebarProps>`
+export const LinkContainerBtn = styled.button<ISidebarProps>`
   text-align: center;
   overflow: hidden;
   color: ${colors.gray[800]};

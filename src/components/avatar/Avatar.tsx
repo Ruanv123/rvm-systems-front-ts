@@ -1,12 +1,12 @@
 import * as S from './styles'
 
-interface AvatarProps {
+interface IAvatarProps {
   size: number | string
   src?: string
   alt: string
 }
 
-export const Avatar = ({ size, src, alt }: AvatarProps) => {
+export const Avatar = ({ size, src, alt }: IAvatarProps) => {
   return (
     <S.Wrapper size={size}>
       {src ? (

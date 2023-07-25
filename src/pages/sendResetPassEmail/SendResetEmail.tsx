@@ -9,7 +9,7 @@ import { API_BASE_URL } from '../../constants/Constants'
 import { colors } from '../../styles/tokens/colors'
 import { useNavigate } from 'react-router-dom'
 
-interface FormData {
+interface IFormData {
   email: string
 }
 
@@ -19,9 +19,9 @@ export default function SendResetEmail() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>()
+  } = useForm<IFormData>()
 
-  const onSubmitEmail = async (data: FormData) => {
+  const onSubmitEmail = async (data: IFormData) => {
     try {
       const response = await axios.post(
         `${API_BASE_URL}/user/reset-pass-email`,

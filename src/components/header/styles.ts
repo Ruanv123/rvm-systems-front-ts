@@ -5,7 +5,7 @@ import { colors } from '../../styles/tokens/colors'
 import { spacing } from '../../styles/tokens/spacing'
 import { typography } from '../../styles/tokens/typography'
 
-interface NavProps {
+interface INavProps {
   isOpen: boolean
 }
 
@@ -67,7 +67,7 @@ export const Hamburguer = styled.div`
   }
 `
 
-export const Nav = styled.nav<NavProps>`
+export const Nav = styled.nav<INavProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;

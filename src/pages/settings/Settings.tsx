@@ -11,7 +11,7 @@ import { colors } from '../../styles/tokens/colors'
 import { useForm } from 'react-hook-form'
 import { GetToken } from '../../utils/useStorage'
 
-interface FormData {
+interface IFormData {
   name?: string
   email?: string
   password?: string
@@ -26,22 +26,22 @@ export default function SettingsPage() {
     register,
     handleSubmit,
     /* formState: { errors }, */
-  } = useForm<FormData>()
+  } = useForm<IFormData>()
 
   const name = userData?.name
   const avatarUrl = userData?.avatar
   const userId = userData?.id
   const lastUpdated = userData?.updatedAt
 
-  const handleUpdateUser = async (data: FormData) => {
-    const filledData: FormData = Object.entries(data).reduce(
+  const handleUpdateUser = async (data: IFormData) => {
+    const filledData: IFormData = Object.entries(data).reduce(
       (acc, [key, value]) => {
         if (value !== undefined && value.trim() !== '') {
-          acc[key as keyof FormData] = value
+          acc[key as keyof IFormData] = value
         }
         return acc
       },
-      {} as FormData,
+      {} as IFormData,
     )
 
     try {

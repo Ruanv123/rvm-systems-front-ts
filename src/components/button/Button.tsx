@@ -1,6 +1,6 @@
 import { ButtonComponent } from './styles'
 
-interface ButtonProps {
+interface IButtonProps {
   size: number | string
   type: 'button' | 'reset' | 'submit'
   text: string
@@ -8,7 +8,7 @@ interface ButtonProps {
   onClick?: () => void
 }
 
-export const Button = ({ text, type, onClick, size, color }: ButtonProps) => {
+export const Button = ({ text, type, onClick, size, color }: IButtonProps) => {
   return (
     <>
       <ButtonComponent type={type} onClick={onClick} size={size} color={color}>

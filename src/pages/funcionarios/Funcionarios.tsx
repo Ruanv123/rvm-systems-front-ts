@@ -6,7 +6,7 @@ import { API_BASE_URL } from '../../constants/Constants'
 import { ToastContainer, toast } from 'react-toastify'
 import { BsTrash } from 'react-icons/bs'
 
-interface Users {
+interface IUsers {
   id: number
   name: string
   email: string
@@ -20,7 +20,7 @@ interface Users {
 }
 
 export default function Funcionarios() {
-  const [users, setUsers] = useState<Users[]>([])
+  const [users, setUsers] = useState<IUsers[]>([])
   const [loading, setLoading] = useState(false)
 
   const token: string | null = GetToken('token')

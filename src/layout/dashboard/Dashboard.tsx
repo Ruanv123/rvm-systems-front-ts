@@ -13,15 +13,15 @@ import { SHeader, SLayout, SMain } from './styles'
 import { Sidebar } from '../../components/sidebar/Sidebar'
 import { HeaderDashboard } from '../../components/headerDash/HeaderDashboard'
 
-interface DashboardLayoutProps {
+interface IDashboardLayoutProps {
   children: ReactNode
 }
 
-interface DeocdedToken {
+interface IDeocdedToken {
   id: number
 }
 
-interface UserData {
+interface IUserData {
   id: number
   name: string
   email: string
@@ -34,11 +34,11 @@ interface UserData {
   updatedAt: string
 }
 
-interface LayoutContextProps {
-  userData: UserData
+interface ILayoutContextProps {
+  userData: IUserData
 }
 
-export const LayoutContext = createContext<LayoutContextProps>({
+export const LayoutContext = createContext<ILayoutContextProps>({
   userData: {
     id: 0,
     name: '',
@@ -51,8 +51,8 @@ export const LayoutContext = createContext<LayoutContextProps>({
   },
 })
 
-export const DashLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
-  const [userData, setUserData] = useState<UserData>({
+export const DashLayout: React.FC<IDashboardLayoutProps> = ({ children }) => {
+  const [userData, setUserData] = useState<IUserData>({
     id: 0,
     name: '',
     createdAt: '',
@@ -88,7 +88,7 @@ export const DashLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     try {
       const token = GetToken('token')
       if (token) {
-        const decodedToken = jwtDecode<DeocdedToken>(token)
+        const decodedToken = jwtDecode<IDeocdedToken>(token)
         const id: number = decodedToken.id
 
         const res = await axios.get(`${API_BASE_URL}/user/${id}`, {
@@ -115,7 +115,7 @@ export const DashLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <LayoutContext.Provider value={{ userData }}>
       <SLayout>
-        <Sidebar id={userData?.id} />
+        <Sidebar />
         <SHeader>
           <HeaderDashboard />
           <SMain>{children}</SMain>

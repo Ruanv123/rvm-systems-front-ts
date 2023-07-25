@@ -1,8 +1,37 @@
+import axios from 'axios'
 import { Button } from '../../components/button/Button'
 import { colors } from '../../styles/tokens/colors'
 import * as S from './styles'
+import { API_BASE_URL_2 } from '../../constants/Constants'
+import { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+
+interface iClientes {
+  id: string
+  name: string
+  email: string
+  password: string
+  telefone: string
+  avatar?: string
+  descricao?: string
+  cpf: string
+  createdAt: string
+  updatedAt: string
+}
 
 export default function Clientes() {
+  const [clientes, setClientes] = useState<iClientes[]>([])
+  const [loading, setLoading] = useState(false)
+
+  const handleCliente = async () => {
+    try {
+      const res = await axios.get(`${API_BASE_URL_2}/clientes`)
+      const data = res.data
+      setClientes(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <>
       <S.Container>
@@ -35,27 +64,46 @@ export default function Clientes() {
           </S.TableRow>
         </thead>
         <tbody>
-          <S.TableRow>
-            <S.TableCell>
-              <input type="checkbox" style={{ cursor: 'pointer' }} />
-            </S.TableCell>
-            <S.TableCell>1</S.TableCell>
-            <S.TableCell>Ruan Victor</S.TableCell>
-            <S.TableCell>ruanvictormr@gmail.com</S.TableCell>
-            <S.TableCell>31 986441470</S.TableCell>
-            <S.TableCell>Desc</S.TableCell>
-            <S.TableCell>CPF</S.TableCell>
-            <S.TableCell>CreatedAt</S.TableCell>
-            <S.TableCell>UpdatedAt</S.TableCell>
-            <S.TableCell>
-              {/*  <S.Trashbtn onClick={() => handleDeleteUser(user.id)}>
+          {clientes.map((cliente) => (
+            <S.TableRow key={cliente.id}>
+              <S.TableCell>
+                <input type="checkbox" style={{ cursor: 'pointer' }} />
+              </S.TableCell>
+              <S.TableCell>{cliente.name}</S.TableCell>
+              <S.TableCell>{cliente.email}</S.TableCell>
+              <S.TableCell>{cliente.password}</S.TableCell>
+              <S.TableCell>{cliente.telefone}</S.TableCell>
+              {cliente.descricao === null ? (
+                <S.TableCell>vazio</S.TableCell>
+              ) : (
+                <S.TableCell>{cliente.descricao}</S.TableCell>
+              )}
+
+              <S.TableCell>{cliente.cpf}</S.TableCell>
+              <S.TableCell>{cliente.createdAt}</S.TableCell>
+              <S.TableCell>{cliente.updatedAt}</S.TableCell>
+              <S.TableCell>
+                {/*  <S.Trashbtn onClick={() => handleDeleteUser(user.id)}>
                 <BsTrash size={23} />
               </S.Trashbtn> */}
-              deletar
-            </S.TableCell>
-          </S.TableRow>
+                deletar
+              </S.TableCell>
+            </S.TableRow>
+          ))}
         </tbody>
       </S.Table>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </>
   )
 }

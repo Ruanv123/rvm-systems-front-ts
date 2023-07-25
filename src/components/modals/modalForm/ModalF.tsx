@@ -2,12 +2,12 @@ import { ReactNode } from 'react'
 import * as S from './styles'
 import { MdOutlineClear } from 'react-icons/md'
 
-interface ModalProps {
+interface IModalProps {
   onClose: () => void
   children: ReactNode
 }
 
-export const ModalF = ({ onClose, children }: ModalProps) => {
+export const ModalF = ({ onClose, children }: IModalProps) => {
   return (
     <>
       <S.Wrapper>

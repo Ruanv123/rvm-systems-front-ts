@@ -10,7 +10,7 @@ import { API_BASE_URL } from '../../constants/Constants'
 import { useForm } from 'react-hook-form'
 import { colors } from '../../styles/tokens/colors'
 
-interface FormData {
+interface IFormData {
   newPassword: string
   confirmPassword: string
 }
@@ -22,11 +22,11 @@ export default function ResetPassword() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>()
+  } = useForm<IFormData>()
 
   const location = useLocation()
 
-  const handleResetPassword = async (data: FormData) => {
+  const handleResetPassword = async (data: IFormData) => {
     const searchParams = new URLSearchParams(location.search)
     const token = searchParams.get('token')
     try {

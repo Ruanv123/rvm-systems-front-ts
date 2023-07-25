@@ -40,11 +40,11 @@ const DashboardLayout = () => {
   )
 }
 
-interface ProtectedType {
+interface IProtectedType {
   children: ReactNode
 }
 
-const Protected: React.FC<ProtectedType> = ({ children }) => {
+const Protected: React.FC<IProtectedType> = ({ children }) => {
   const isAuthenticated = GetToken('token')
   return isAuthenticated ? children : <Navigate to="/login" replace />
 }

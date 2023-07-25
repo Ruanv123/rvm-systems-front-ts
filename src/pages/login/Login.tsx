@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form'
 import { API_BASE_URL } from '../../constants/Constants'
 import { UseStorage } from '../../utils/useStorage'
 
-interface FormData {
+interface IFormData {
   email: string
   password: string
 }
@@ -18,10 +18,10 @@ export default function Login() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>()
+  } = useForm<IFormData>()
   const navigate = useNavigate()
 
-  const handleLogin = async (data: FormData) => {
+  const handleLogin = async (data: IFormData) => {
     try {
       const response = await axios.post(`${API_BASE_URL}/auth/login`, data)
       const { token, refreshToken } = response.data
