@@ -31,6 +31,7 @@ import About from '../pages/about/About'
 import PrivacidadePage from '../pages/privacidade/PrivacidadePage'
 import Career from '../pages/career/Career'
 import ControleDeCaixa from '../pages/controleDeCaixa/ControleDeCaixa'
+import SignupClient from '../pages/auth/signUpClient/SignupClient'
 
 const DashboardLayout = () => {
   return (
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />,
+  },
+  {
+    path: '/signup/cliente',
+    element: <SignupClient />,
   },
   {
     path: '/login',

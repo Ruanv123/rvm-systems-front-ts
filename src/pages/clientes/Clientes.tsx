@@ -1,12 +1,11 @@
 import axios from 'axios'
-import { Button } from '../../components/button/Button'
-import { colors } from '../../styles/tokens/colors'
 import * as S from './styles'
 import { API_BASE_URL_2 } from '../../constants/Constants'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
+import { BsTrash } from 'react-icons/bs'
 
-interface iClientes {
+interface IClientes {
   id: string
   name: string
   email: string
@@ -19,9 +18,23 @@ interface iClientes {
   updatedAt: string
 }
 
+/* interface IFormData {
+  id: string
+  name: string
+  email: string
+  password: string
+  telefone: string
+  avatar?: string
+  descricao?: string
+  cpf: string
+  createdAt: string
+  updatedAt: string
+} */
+
 export default function Clientes() {
-  const [clientes, setClientes] = useState<iClientes[]>([])
-  const [loading, setLoading] = useState(false)
+  const [clientes, setClientes] = useState<IClientes[]>([])
+
+  // const [loading, setLoading] = useState(false)
 
   const handleCliente = async () => {
     try {
@@ -32,16 +45,37 @@ export default function Clientes() {
       console.error(error)
     }
   }
+
+  /* const handleCreateCliente = async (data: IFormData) => {
+    try {
+      await axios.post(`${API_BASE_URL_2}/cliente`, {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        telefone: data.telefone,
+        cpf: data.cpf,
+      })
+      setLoading(true)
+      toast.success('sucesso ao criar cliente!')
+      setLoading(false)
+    } catch (error) {
+      toast.error('ocorreu um error: ' + error)
+    }
+  } */
+
+  useEffect(() => {
+    handleCliente()
+  }, [])
   return (
     <>
       <S.Container>
         <S.Titulo>Clientes</S.Titulo>
-        <Button
+        {/*  <Button
           type="submit"
           size={150}
           text="Add Cliente +"
           color={`${colors.blue[500]}`}
-        />
+        /> */}
       </S.Container>
       <S.Table>
         <thead>
@@ -52,7 +86,6 @@ export default function Clientes() {
             <S.TableHCell>
               <input type="checkbox" />
             </S.TableHCell>
-            <S.TableHCell>Id</S.TableHCell>
             <S.TableHCell>Nome</S.TableHCell>
             <S.TableHCell>Email</S.TableHCell>
             <S.TableHCell>Telefone</S.TableHCell>
@@ -71,7 +104,6 @@ export default function Clientes() {
               </S.TableCell>
               <S.TableCell>{cliente.name}</S.TableCell>
               <S.TableCell>{cliente.email}</S.TableCell>
-              <S.TableCell>{cliente.password}</S.TableCell>
               <S.TableCell>{cliente.telefone}</S.TableCell>
               {cliente.descricao === null ? (
                 <S.TableCell>vazio</S.TableCell>
@@ -83,10 +115,9 @@ export default function Clientes() {
               <S.TableCell>{cliente.createdAt}</S.TableCell>
               <S.TableCell>{cliente.updatedAt}</S.TableCell>
               <S.TableCell>
-                {/*  <S.Trashbtn onClick={() => handleDeleteUser(user.id)}>
-                <BsTrash size={23} />
-              </S.Trashbtn> */}
-                deletar
+                <S.Trashbtn>
+                  <BsTrash size={23} />
+                </S.Trashbtn>
               </S.TableCell>
             </S.TableRow>
           ))}

@@ -37,3 +37,7 @@ export const TableCell = styled.td`
   text-align: center;
   border: 1px solid ${colors.gray[180]};
 `
+
+export const Trashbtn = styled.button`
+  background-color: transparent;
+`

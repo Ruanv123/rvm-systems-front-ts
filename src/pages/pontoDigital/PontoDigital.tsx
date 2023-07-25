@@ -1,3 +1,11 @@
+import * as S from './styles'
+
 export default function PontoDigital() {
-  return <div>PontoDigital</div>
+  return (
+    <>
+      <S.Container>
+        <S.Titulo>Ponto Digital</S.Titulo>
+      </S.Container>
+    </>
+  )
 }
