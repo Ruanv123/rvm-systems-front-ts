@@ -1,15 +1,15 @@
 import axios from 'axios'
-import { Button } from '../../components/button/Button'
-import { colors } from '../../styles/tokens/colors'
-import * as S from './styles'
-import { API_BASE_URL_2 } from '../../constants/Constants'
-import { ModalF } from '../../components/modals/modalForm/ModalF'
-import { useState, useEffect } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Input } from '../../components/input/Input'
-import { useCepMask, useCpnjMask, useTelefoneMask } from '../../utils/useMasks'
 import { BsTrash } from 'react-icons/bs'
+import { ToastContainer, toast } from 'react-toastify'
+import { Button } from '../../components/button/Button'
+import { Input } from '../../components/input/Input'
+import { ModalF } from '../../components/modals/modalForm/ModalF'
+import { API_BASE_URL_2 } from '../../constants/Constants'
+import { colors } from '../../styles/tokens/colors'
+import { useCepMask, useCpnjMask, useTelefoneMask } from '../../utils/useMasks'
+import * as S from './styles'
 
 interface IForncedores {
   id: string
@@ -162,28 +162,29 @@ export default function Fornecedor() {
         {isModalOpen && (
           <ModalF onClose={closeModal}>
             <S.Titulo>Cadastrar Fornecedor</S.Titulo>
-            <p></p>
             <form onSubmit={handleSubmit(handleCreateFornecedor)}>
-              <label htmlFor="">
-                Nome do fornecedor
+              <div style={{ width: '320px' }}>
                 <Input
+                  label="Nome do fornecedor"
                   placeholder="Nome"
                   type="text"
                   {...register('nome', { required: true })}
+                  name="nome"
                 />
-              </label>
-              {errors.nome && (
-                <p style={{ color: 'red', marginBottom: '10px' }}>
-                  Preencha o campo
-                </p>
-              )}
-              <label htmlFor="">
-                telefone do fornecedor
+                {errors.nome && (
+                  <p style={{ color: 'red', marginBottom: '10px' }}>
+                    Preencha o campo
+                  </p>
+                )}
+              </div>
+              <div style={{ width: '320px' }}>
                 <Input
+                  label=" telefone do fornecedor"
                   placeholder="(00) 0000-0000"
                   maxLength={11}
                   type="text"
                   {...register('telefone', { required: true })}
+                  name="telefone"
                   onChange={(event) => {
                     const valor = event.target.value
                     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -192,45 +193,48 @@ export default function Fornecedor() {
                     return event
                   }}
                 />
-              </label>
-              {errors.telefone && (
-                <p style={{ color: 'red', marginBottom: '10px' }}>
-                  Preencha o campo
-                </p>
-              )}
-              <label htmlFor="">
-                Email do fornecedor
+                {errors.telefone && (
+                  <p style={{ color: 'red', marginBottom: '10px' }}>
+                    Preencha o campo
+                  </p>
+                )}
+              </div>
+              <div style={{ width: '320px' }}>
                 <Input
+                  label="Email do fornecedor"
+                  {...register('email', { required: true })}
+                  name="email"
                   placeholder="email"
                   type="text"
-                  {...register('email', { required: true })}
                 />
-              </label>
-              {errors.email && (
-                <p style={{ color: 'red', marginBottom: '10px' }}>
-                  Preencha o campo
-                </p>
-              )}
-              <label htmlFor="">
-                Site do fornecedor
+                {errors.email && (
+                  <p style={{ color: 'red', marginBottom: '10px' }}>
+                    Preencha o campo
+                  </p>
+                )}
+              </div>
+              <div style={{ width: '320px' }}>
                 <Input
+                  label="Site do fornecedor"
+                  {...register('site', { required: true })}
+                  name="site"
                   placeholder="Site"
                   type="text"
-                  {...register('site', { required: true })}
                 />
-              </label>
-              {errors.site && (
-                <p style={{ color: 'red', marginBottom: '10px' }}>
-                  Preencha o campo
-                </p>
-              )}
-              <label htmlFor="">
-                Cnpj do fornecedor
+                {errors.site && (
+                  <p style={{ color: 'red', marginBottom: '10px' }}>
+                    Preencha o campo
+                  </p>
+                )}
+              </div>
+              <div style={{ width: '320px' }}>
                 <Input
+                  label="Cnpj do fornecedor"
                   placeholder="00.000.000/0001-00"
                   type="text"
                   maxLength={14}
                   {...register('cpnj', { required: true })}
+                  name="cnpj"
                   onChange={(event) => {
                     const valor = event.target.value
                     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -239,32 +243,34 @@ export default function Fornecedor() {
                     return event
                   }}
                 />
-              </label>
-              {errors.cpnj && (
-                <p style={{ color: 'red', marginBottom: '10px' }}>
-                  Preencha o campo
-                </p>
-              )}
-              <label htmlFor="">
-                Endereco do fornecedor
+                {errors.cpnj && (
+                  <p style={{ color: 'red', marginBottom: '10px' }}>
+                    Preencha o campo
+                  </p>
+                )}
+              </div>
+              <div style={{ width: '320px' }}>
                 <Input
+                  label="Endereco do fornecedor"
+                  {...register('endereco', { required: true })}
+                  name="end"
                   placeholder="endereco do fornecedor"
                   type="text"
-                  {...register('endereco', { required: true })}
                 />
-              </label>
-              {errors.tipo && (
-                <p style={{ color: 'red', marginBottom: '10px' }}>
-                  Preencha o campo
-                </p>
-              )}
-              <label htmlFor="">
-                Cep do fornecedor
+                {errors.tipo && (
+                  <p style={{ color: 'red', marginBottom: '10px' }}>
+                    Preencha o campo
+                  </p>
+                )}
+              </div>
+              <div style={{ width: '320px' }}>
                 <Input
+                  label="Cep do fornecedor"
+                  {...register('cep', { required: true })}
+                  name="cep"
                   placeholder="00000-000"
                   type="text"
                   maxLength={8}
-                  {...register('cep', { required: true })}
                   onChange={(event) => {
                     const valor = event.target.value
                     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -273,25 +279,27 @@ export default function Fornecedor() {
                     return event
                   }}
                 />
-              </label>
-              {errors.tipo && (
-                <p style={{ color: 'red', marginBottom: '10px' }}>
-                  Preencha o campo
-                </p>
-              )}
-              <label htmlFor="">
-                tipo do fornecedor
+                {errors.tipo && (
+                  <p style={{ color: 'red', marginBottom: '10px' }}>
+                    Preencha o campo
+                  </p>
+                )}
+              </div>
+              <div style={{ width: '320px', marginBottom: '1rem' }}>
                 <Input
+                  label="tipo do fornecedor"
+                  {...register('tipo', { required: true })}
+                  name="tipo"
                   placeholder="tipo do fornecedor"
                   type="text"
-                  {...register('tipo', { required: true })}
                 />
-              </label>
-              {errors.tipo && (
-                <p style={{ color: 'red', marginBottom: '10px' }}>
-                  Preencha o campo
-                </p>
-              )}
+                {errors.tipo && (
+                  <p style={{ color: 'red', marginBottom: '10px' }}>
+                    Preencha o campo
+                  </p>
+                )}
+              </div>
+
               <Button
                 type="submit"
                 text="Criar Fornecedor"
