@@ -23,7 +23,7 @@ export const Footer = () => {
               <S.MenuItemLink to="/">Contato</S.MenuItemLink>
             </S.MenuItem>
             <S.MenuItem>
-              <S.MenuItemLink to="/">Carreira</S.MenuItemLink>
+              <S.MenuItemLink to="/intranet">Intranet</S.MenuItemLink>
             </S.MenuItem>
             <S.MenuItem>
               <S.MenuItemLink to="/">Ajuda</S.MenuItemLink>

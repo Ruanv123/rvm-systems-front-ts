@@ -32,6 +32,7 @@ import PrivacidadePage from '../pages/privacidade/PrivacidadePage'
 import Career from '../pages/career/Career'
 import ControleDeCaixa from '../pages/controleDeCaixa/ControleDeCaixa'
 import SignupClient from '../pages/auth/signUpClient/SignupClient'
+import SignClient from '../pages/auth/signInIntranet/SignClient'
 
 const DashboardLayout = () => {
   return (
@@ -47,6 +48,11 @@ interface IProtectedType {
 
 const Protected: React.FC<IProtectedType> = ({ children }) => {
   const isAuthenticated = GetToken('token')
+  return isAuthenticated ? children : <Navigate to="/login" replace />
+}
+
+const PrivateClient: React.FC<IProtectedType> = ({ children }) => {
+  const isAuthenticated = true
   return isAuthenticated ? children : <Navigate to="/login" replace />
 }
 
@@ -76,8 +82,12 @@ const router = createBrowserRouter([
     element: <SignupClient />,
   },
   {
-    path: '/login',
+    path: '/intranet',
     element: <Login />,
+  },
+  {
+    path: '/login',
+    element: <SignClient />,
   },
   {
     path: '/reset-email',
@@ -153,6 +163,14 @@ const router = createBrowserRouter([
         element: <Funcionarios />,
       },
     ],
+  },
+  {
+    path: '/cliente',
+    element: (
+      <PrivateClient>
+        <Outlet />
+      </PrivateClient>
+    ),
   },
 ])
 

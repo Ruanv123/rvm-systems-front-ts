@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import { Input } from '../../components/input/Input'
-import { useCpnjMask, useTelefoneMask } from '../../utils/useMasks'
+import { useCepMask, useCpnjMask, useTelefoneMask } from '../../utils/useMasks'
 import { BsTrash } from 'react-icons/bs'
 
 interface IForncedores {
@@ -80,7 +80,6 @@ export default function Fornecedor() {
       setLoading(true)
       toast.success('sucesso ao cadastrar fornecedor')
       closeModal()
-      setLoading(false)
     } catch (error) {
       toast.error('ocorreu um error' + error)
     }
@@ -107,7 +106,7 @@ export default function Fornecedor() {
         <Button
           type="submit"
           size={150}
-          text="Add fornecedor"
+          text="Add fornecedor +"
           color={`${colors.blue[500]}`}
           onClick={openModal}
         />
@@ -262,9 +261,17 @@ export default function Fornecedor() {
               <label htmlFor="">
                 Cep do fornecedor
                 <Input
-                  placeholder="Cep do fornecedor"
+                  placeholder="00000-000"
                   type="text"
+                  maxLength={8}
                   {...register('cep', { required: true })}
+                  onChange={(event) => {
+                    const valor = event.target.value
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    const telefoneFormatado = useCepMask(valor)
+                    event.target.value = telefoneFormatado
+                    return event
+                  }}
                 />
               </label>
               {errors.tipo && (

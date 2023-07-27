@@ -1,11 +1,7 @@
-import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify'
-import { Button } from '../../components/button/Button'
-import { Input } from '../../components/input/Input'
-import { API_BASE_URL } from '../../constants/Constants'
-import { UseStorage } from '../../utils/useStorage'
+import { Button } from '../../../components/button/Button'
+import { Input } from '../../../components/input/Input'
 import * as S from './styles'
 
 interface IFormData {
@@ -13,7 +9,7 @@ interface IFormData {
   password: string
 }
 
-export default function Login() {
+export default function SignClient() {
   const {
     register,
     handleSubmit,
@@ -21,26 +17,12 @@ export default function Login() {
   } = useForm<IFormData>()
   const navigate = useNavigate()
 
-  const handleLogin = async (data: IFormData) => {
-    try {
-      const response = await axios.post(`${API_BASE_URL}/auth/login`, data)
-      const { token, refreshToken } = response.data
-      UseStorage('token', token)
-      UseStorage('refreshToken', refreshToken)
-
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`
-      toast.success('logado com sucesso!')
-      navigate('/dashboard/')
-    } catch (error) {
-      toast.error('ocorreu um erro durante o login' + error)
-    }
-  }
   return (
     <S.Body>
       <S.Voltar to="/">Voltar</S.Voltar>
       <S.Container>
-        <S.Form onSubmit={handleSubmit(handleLogin)}>
-          <S.FormTitle>Sign in</S.FormTitle>
+        <S.Form>
+          <S.FormTitle>Login Client</S.FormTitle>
           <S.FormControl>
             <div style={{ width: '320px' }}>
               <Input
@@ -82,18 +64,6 @@ export default function Login() {
           </S.Span>
         </S.Form>
       </S.Container>
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
     </S.Body>
   )
 }

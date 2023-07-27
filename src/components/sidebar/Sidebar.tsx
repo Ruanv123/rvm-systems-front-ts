@@ -21,7 +21,7 @@ export const Sidebar = () => {
   const disconnect = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('refreshToken')
-    navigate('/login')
+    navigate('/intranet')
   }
 
   return (

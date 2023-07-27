@@ -1,14 +1,15 @@
 import * as S from './styles'
 
+import axios from 'axios'
+import { useForm } from 'react-hook-form'
+import { ToastContainer, toast } from 'react-toastify'
 import { Avatar } from '../../components/avatar/Avatar'
-import { useUser } from '../../layout/dashboard/Dashboard'
 import { Button } from '../../components/button/Button'
 import { Input } from '../../components/input/Input'
-import axios from 'axios'
 import { API_BASE_URL } from '../../constants/Constants'
-import { ToastContainer, toast } from 'react-toastify'
+import { useUser } from '../../layout/dashboard/Dashboard'
 import { colors } from '../../styles/tokens/colors'
-import { useForm } from 'react-hook-form'
+import { useTelefoneMask } from '../../utils/useMasks'
 import { GetToken } from '../../utils/useStorage'
 
 interface IFormData {
@@ -103,44 +104,71 @@ export default function SettingsPage() {
           <form onSubmit={handleSubmit(handleUpdateUser)}>
             <S.Div>
               <div>
-                <label htmlFor="">
-                  Nome
-                  <Input placeholder="nome" {...register('name')} type="text" />
-                </label>
-                <label htmlFor="">
-                  Email
+                <div style={{ width: '320px' }}>
                   <Input
+                    label="Nome"
+                    {...register('name')}
+                    name="nome"
+                    placeholder="nome"
+                    type="text"
+                  />
+                </div>
+
+                <div style={{ width: '320px' }}>
+                  <Input
+                    label="Email"
+                    {...register('email')}
+                    name="email"
                     placeholder="Email"
                     type="email"
-                    {...register('email')}
                   />
-                </label>
-                <label htmlFor="">
-                  Password
+                </div>
+
+                <div style={{ width: '320px' }}>
                   <Input
+                    label="Password"
+                    {...register('password')}
+                    name="password"
                     placeholder="Password"
                     type="password"
-                    {...register('password')}
                   />
-                </label>
+                </div>
               </div>
               <div>
-                <label htmlFor="">
-                  Avatar Url
+                <div style={{ width: '320px' }}>
                   <Input
+                    label="Avatar Url"
+                    {...register('avatar')}
+                    name="avatarUrl"
                     placeholder="Avatar Url"
                     type="text"
-                    {...register('avatar')}
                   />
-                </label>
-                <label htmlFor="">
-                  descrição
-                  <Input placeholder="descrição" {...register('desc')} />
-                </label>
-                <label htmlFor="">
-                  Telefone
-                  <Input placeholder="Telefone" {...register('telefone')} />
-                </label>
+                </div>
+                <div style={{ width: '320px' }}>
+                  <Input
+                    label="Descrição"
+                    placeholder="descrição"
+                    {...register('desc')}
+                    name="desc"
+                    type="text"
+                  />
+                </div>
+                <div style={{ width: '320px' }}>
+                  <Input
+                    label="Telefone"
+                    placeholder="(00) 0000-0000"
+                    {...register('telefone')}
+                    type="text"
+                    maxLength={11}
+                    onChange={(event) => {
+                      const valor = event.target.value
+                      // eslint-disable-next-line react-hooks/rules-of-hooks
+                      const telefoneFormatado = useTelefoneMask(valor)
+                      event.target.value = telefoneFormatado
+                      return event
+                    }}
+                  />
+                </div>
               </div>
             </S.Div>
             <S.Spacing />
@@ -151,8 +179,6 @@ export default function SettingsPage() {
               color={`${colors.blue[550]}`}
             />
           </form>
-
-          <S.ButtonWrapper></S.ButtonWrapper>
         </S.EditForm>
       </S.Wrapper>
       <ToastContainer

@@ -1,16 +1,19 @@
-import { forwardRef, Ref, InputHTMLAttributes } from 'react'
-import { InputControl, StyledInput } from './styles'
+import { InputHTMLAttributes, forwardRef } from 'react'
+import * as S from './styles'
 
-type InputProps = InputHTMLAttributes<HTMLInputElement>
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+  label?: string
+}
 
 // eslint-disable-next-line react/display-name
-export const Input = forwardRef(
-  (props: InputProps, ref: Ref<HTMLInputElement>) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ type = 'text', name = '', ...props }, ref) => {
     return (
       <>
-        <InputControl>
-          <StyledInput ref={ref} {...props} />
-        </InputControl>
+        <S.Container>
+          <S.Label htmlFor={name}>{props.label}</S.Label>
+          <S.Input type={type} name={name} ref={ref} {...props} />
+        </S.Container>
       </>
     )
   },

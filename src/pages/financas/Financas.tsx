@@ -52,7 +52,7 @@ export default function Financas() {
               <h1>Saldo Geral</h1>
               <p>$1599,99</p>
               <hr />
-              <p>grafico</p>
+              <p>Gráfico</p>
               <hr />
               <p>div banco</p>
               <hr />

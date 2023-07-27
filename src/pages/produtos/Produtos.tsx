@@ -72,8 +72,9 @@ export default function Produtos() {
         fornecedorName: data.fornecedorName,
         nomeLoja: data.nomeLoja,
       })
-      toast.success('sucesso ao criar produto!')
       setLoading(true)
+      toast.success('sucesso ao criar produto!')
+      closeModal()
     } catch (error) {
       toast.error(`ocorreu um error!` + error)
     }
@@ -112,7 +113,7 @@ export default function Produtos() {
       <S.Container>
         <S.Titulo>Produtos</S.Titulo>
         <Button
-          text="Add produto"
+          text="Add produto +"
           type="button"
           size={150}
           onClick={openModal}
