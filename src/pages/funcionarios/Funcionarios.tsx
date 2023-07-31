@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
-import * as S from './styles'
-import { GetToken } from '../../utils/useStorage'
 import axios from 'axios'
-import { API_BASE_URL } from '../../constants/Constants'
-import { ToastContainer, toast } from 'react-toastify'
+import { useEffect, useState } from 'react'
 import { BsTrash } from 'react-icons/bs'
+import { ToastContainer, toast } from 'react-toastify'
+import { API_BASE_URL } from '../../constants/Constants'
+import { formatarData } from '../../utils/useFormatDate'
+import { GetToken } from '../../utils/useStorage'
+import * as S from './styles'
 
 interface IUsers {
   id: number
@@ -100,8 +101,8 @@ export default function Funcionarios() {
               ) : (
                 <S.TableCell>{user.desc}</S.TableCell>
               )}
-              <S.TableCell>{user.createdAt}</S.TableCell>
-              <S.TableCell>{user.updatedAt}</S.TableCell>
+              <S.TableCell>{formatarData(user.createdAt)}</S.TableCell>
+              <S.TableCell>{formatarData(user.updatedAt)}</S.TableCell>
               <S.TableCell>
                 <S.Trashbtn onClick={() => handleDeleteUser(user.id)}>
                   <BsTrash size={23} />

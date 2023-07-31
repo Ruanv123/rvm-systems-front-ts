@@ -6,39 +6,49 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 
-import { GetToken } from '../utils/useStorage'
+import { ClientLayout } from '../layout/Client/ClientLayout'
 import { DashLayout } from '../layout/dashboard/Dashboard'
+import { GetToken } from '../utils/useStorage'
 // paginas
-import Home from '../pages/home/Home'
-import Register from '../pages/register/Register'
-import Login from '../pages/login/Login'
-import SendResetEmail from '../pages/sendResetPassEmail/SendResetEmail'
-import ResetPassword from '../pages/resetPass/ResetPassword'
-import SendResetPassConfirm from '../pages/sendResetPassConfirm/SendResetPassConfirm'
-import ResetPassConfirm from '../pages/resetPassConfirm/ResetPassConfirm'
-import Error from '../pages/error/Error'
-import Dashboard from '../pages/dashboard/Dashboard'
-import Clientes from '../pages/clientes/Clientes'
-import PontoDigital from '../pages/pontoDigital/PontoDigital'
-import Produtos from '../pages/produtos/Produtos'
-import SettingsPage from '../pages/settings/Settings'
-import Financas from '../pages/financas/Financas'
-import ContasAReceber from '../pages/contasAReceber/ContasAReceber'
-import ContasAPagar from '../pages/contasAPagar/ContasAPagar'
-import Funcionarios from '../pages/funcionarios/Funcionarios'
-import Fornecedor from '../pages/fornecedor/Fornecedor'
 import About from '../pages/about/About'
-import PrivacidadePage from '../pages/privacidade/PrivacidadePage'
-import Career from '../pages/career/Career'
-import ControleDeCaixa from '../pages/controleDeCaixa/ControleDeCaixa'
-import SignupClient from '../pages/auth/signUpClient/SignupClient'
 import SignClient from '../pages/auth/signInIntranet/SignClient'
+import SignupClient from '../pages/auth/signUpClient/SignupClient'
+import Career from '../pages/career/Career'
+import Catalog from '../pages/catalog/Catalog'
+import Clientes from '../pages/clientes/Clientes'
+import ContasAPagar from '../pages/contasAPagar/ContasAPagar'
+import ContasAReceber from '../pages/contasAReceber/ContasAReceber'
+import ControleDeCaixa from '../pages/controleDeCaixa/ControleDeCaixa'
+import Dashboard from '../pages/dashboard/Dashboard'
+import Error from '../pages/error/Error'
+import Financas from '../pages/financas/Financas'
+import Fornecedor from '../pages/fornecedor/Fornecedor'
+import Funcionarios from '../pages/funcionarios/Funcionarios'
+import Home from '../pages/home/Home'
+import Login from '../pages/login/Login'
+import PontoDigital from '../pages/pontoDigital/PontoDigital'
+import PrivacidadePage from '../pages/privacidade/PrivacidadePage'
+import Produtos from '../pages/produtos/Produtos'
+import Register from '../pages/register/Register'
+import ResetPassword from '../pages/resetPass/ResetPassword'
+import ResetPassConfirm from '../pages/resetPassConfirm/ResetPassConfirm'
+import SendResetPassConfirm from '../pages/sendResetPassConfirm/SendResetPassConfirm'
+import SendResetEmail from '../pages/sendResetPassEmail/SendResetEmail'
+import SettingsPage from '../pages/settings/Settings'
 
 const DashboardLayout = () => {
   return (
     <DashLayout>
       <Outlet />
     </DashLayout>
+  )
+}
+
+const ClienteLayout = () => {
+  return (
+    <ClientLayout>
+      <Outlet />
+    </ClientLayout>
   )
 }
 
@@ -165,12 +175,21 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/cliente',
+    path: '/client',
     element: (
       <PrivateClient>
-        <Outlet />
+        <ClienteLayout />
       </PrivateClient>
     ),
+    children: [
+      {
+        path: '/client/',
+      },
+      {
+        path: '/client/catalog',
+        element: <Catalog />,
+      },
+    ],
   },
 ])
 

@@ -9,6 +9,7 @@ import { Input } from '../../components/input/Input'
 import { API_BASE_URL } from '../../constants/Constants'
 import { useUser } from '../../layout/dashboard/Dashboard'
 import { colors } from '../../styles/tokens/colors'
+import { formatarData } from '../../utils/useFormatDate'
 import { useTelefoneMask } from '../../utils/useMasks'
 import { GetToken } from '../../utils/useStorage'
 
@@ -73,6 +74,8 @@ export default function SettingsPage() {
     }
   }
 
+  console.log(typeof lastUpdated)
+
   return (
     <>
       <S.Title>Configurações</S.Title>
@@ -87,7 +90,10 @@ export default function SettingsPage() {
             <S.TextCard>{userData?.email}</S.TextCard>
             <S.TextCard>Tel: {userData?.telefone}</S.TextCard>
             <S.TextCard>Desc: {userData?.desc}</S.TextCard>
-            <S.TextCard>{lastUpdated}</S.TextCard>
+
+            <S.TextCard>
+              {lastUpdated !== undefined ? formatarData(lastUpdated) : []}
+            </S.TextCard>
           </div>
           <S.Divider />
           <Button
@@ -98,87 +104,88 @@ export default function SettingsPage() {
             onClick={() => handleDeleteUser(userId)}
           />
         </S.Card>
-        <S.EditForm>
+        <S.EditForm onSubmit={handleSubmit(handleUpdateUser)}>
           <S.Title>Editar Usuario</S.Title>
           <S.Text>Alterar as informações da sua conta</S.Text>
-          <form onSubmit={handleSubmit(handleUpdateUser)}>
-            <S.Div>
-              <div>
-                <div style={{ width: '320px' }}>
-                  <Input
-                    label="Nome"
-                    {...register('name')}
-                    name="nome"
-                    placeholder="nome"
-                    type="text"
-                  />
-                </div>
-
-                <div style={{ width: '320px' }}>
-                  <Input
-                    label="Email"
-                    {...register('email')}
-                    name="email"
-                    placeholder="Email"
-                    type="email"
-                  />
-                </div>
-
-                <div style={{ width: '320px' }}>
-                  <Input
-                    label="Password"
-                    {...register('password')}
-                    name="password"
-                    placeholder="Password"
-                    type="password"
-                  />
-                </div>
+          {/* <form > */}
+          <S.Div>
+            <div>
+              <div style={{ width: '320px' }}>
+                <Input
+                  label="Nome"
+                  {...register('name')}
+                  name="name"
+                  placeholder="nome"
+                  type="text"
+                />
               </div>
-              <div>
-                <div style={{ width: '320px' }}>
-                  <Input
-                    label="Avatar Url"
-                    {...register('avatar')}
-                    name="avatarUrl"
-                    placeholder="Avatar Url"
-                    type="text"
-                  />
-                </div>
-                <div style={{ width: '320px' }}>
-                  <Input
-                    label="Descrição"
-                    placeholder="descrição"
-                    {...register('desc')}
-                    name="desc"
-                    type="text"
-                  />
-                </div>
-                <div style={{ width: '320px' }}>
-                  <Input
-                    label="Telefone"
-                    placeholder="(00) 0000-0000"
-                    {...register('telefone')}
-                    type="text"
-                    maxLength={11}
-                    onChange={(event) => {
-                      const valor = event.target.value
-                      // eslint-disable-next-line react-hooks/rules-of-hooks
-                      const telefoneFormatado = useTelefoneMask(valor)
-                      event.target.value = telefoneFormatado
-                      return event
-                    }}
-                  />
-                </div>
+
+              <div style={{ width: '320px' }}>
+                <Input
+                  label="Email"
+                  {...register('email')}
+                  name="email"
+                  placeholder="Email"
+                  type="email"
+                />
               </div>
-            </S.Div>
-            <S.Spacing />
-            <Button
-              text="Editar"
-              type="submit"
-              size={378}
-              color={`${colors.blue[550]}`}
-            />
-          </form>
+
+              <div style={{ width: '320px' }}>
+                <Input
+                  label="Password"
+                  {...register('password')}
+                  name="password"
+                  placeholder="Password"
+                  type="password"
+                />
+              </div>
+            </div>
+            <div>
+              <div style={{ width: '320px' }}>
+                <Input
+                  label="Avatar Url"
+                  {...register('avatar')}
+                  name="avatar"
+                  placeholder="Avatar Url"
+                  type="text"
+                />
+              </div>
+              <div style={{ width: '320px' }}>
+                <Input
+                  label="Descrição"
+                  placeholder="descrição"
+                  {...register('desc')}
+                  name="desc"
+                  type="text"
+                />
+              </div>
+              <div style={{ width: '320px' }}>
+                <Input
+                  label="Telefone"
+                  placeholder="(00) 0000-0000"
+                  {...register('telefone')}
+                  name="telefone"
+                  type="text"
+                  maxLength={11}
+                  onChange={(event) => {
+                    const valor = event.target.value
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    const telefoneFormatado = useTelefoneMask(valor)
+                    event.target.value = telefoneFormatado
+                    return event
+                  }}
+                />
+              </div>
+            </div>
+          </S.Div>
+          <S.Spacing />
+          <Button
+            text="Editar"
+            type="submit"
+            size={378}
+            color={`${colors.blue[550]}`}
+          />
+          {/* </form> */}
         </S.EditForm>
       </S.Wrapper>
       <ToastContainer

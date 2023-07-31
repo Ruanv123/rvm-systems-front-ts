@@ -29,7 +29,7 @@ export const Card = styled.div`
   padding: 20px;
 `
 
-export const EditForm = styled.div`
+export const EditForm = styled.form`
   border: 1px solid ${colors.gray[180]};
   max-width: 1300px;
   width: 100%;
@@ -37,7 +37,7 @@ export const EditForm = styled.div`
   padding: 50px;
 `
 
-export const Div = styled.form`
+export const Div = styled.div`
   display: flex;
   align-items: center;
   gap: 30px;
