@@ -1,13 +1,13 @@
-import * as S from './styles'
-import { ToastContainer, toast } from 'react-toastify'
-import { useState } from 'react'
 import axios from 'axios'
+import { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import * as S from './styles'
 
+import { useForm } from 'react-hook-form'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Button } from '../../components/button/Button'
 import { Input } from '../../components/input/Input'
-import { useLocation, useNavigate } from 'react-router-dom'
 import { API_BASE_URL } from '../../constants/Constants'
-import { useForm } from 'react-hook-form'
 import { colors } from '../../styles/tokens/colors'
 
 interface IFormData {
@@ -68,7 +68,7 @@ export default function ResetPassword() {
                 type="password"
                 placeholder="********"
                 minLength={8}
-                style={{ width: '100%' }}
+                size={350}
               />
               {errors.newPassword && (
                 <span style={{ color: 'red' }}>Este campo é obrigatório</span>
@@ -81,7 +81,7 @@ export default function ResetPassword() {
                 type="password"
                 placeholder="********"
                 minLength={8}
-                style={{ width: '100%' }}
+                size={350}
               />
               {errors.confirmPassword && (
                 <span style={{ color: 'red' }}>Este campo é obrigatório</span>

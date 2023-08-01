@@ -1,9 +1,10 @@
 import axios from 'axios'
-import * as S from './styles'
-import { API_BASE_URL_2 } from '../../constants/Constants'
 import { useEffect, useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
 import { BsTrash } from 'react-icons/bs'
+import { ToastContainer } from 'react-toastify'
+import { API_BASE_URL_2 } from '../../constants/Constants'
+import { formatarData } from '../../utils/useFormatDate'
+import * as S from './styles'
 
 interface IClientes {
   id: string
@@ -112,8 +113,17 @@ export default function Clientes() {
               )}
 
               <S.TableCell>{cliente.cpf}</S.TableCell>
-              <S.TableCell>{cliente.createdAt}</S.TableCell>
-              <S.TableCell>{cliente.updatedAt}</S.TableCell>
+              <S.TableCell>
+                {/* {cliente.createdAt}{' '} */}
+                {cliente.createdAt !== undefined
+                  ? formatarData(cliente.createdAt)
+                  : []}
+              </S.TableCell>
+              <S.TableCell>
+                {cliente.updatedAt !== undefined
+                  ? formatarData(cliente.updatedAt)
+                  : []}
+              </S.TableCell>
               <S.TableCell>
                 <S.Trashbtn>
                   <BsTrash size={23} />

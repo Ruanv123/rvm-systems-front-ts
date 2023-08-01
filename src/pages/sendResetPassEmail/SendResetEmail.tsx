@@ -1,13 +1,13 @@
-import * as S from './styles'
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
+import { ToastContainer, toast } from 'react-toastify'
+import * as S from './styles'
 
+import { useNavigate } from 'react-router-dom'
 import { Button } from '../../components/button/Button'
 import { Input } from '../../components/input/Input'
 import { API_BASE_URL } from '../../constants/Constants'
 import { colors } from '../../styles/tokens/colors'
-import { useNavigate } from 'react-router-dom'
 
 interface IFormData {
   email: string
@@ -55,6 +55,7 @@ export default function SendResetEmail() {
                 type="email"
                 placeholder="johndoe@gmail.com"
                 style={{ width: '100%' }}
+                size={350}
               />
               {errors.email && (
                 <span style={{ color: 'red' }}>Este campo é obrigatório</span>

@@ -1,15 +1,15 @@
 import axios from 'axios'
-import * as S from './styles'
 import { useEffect, useState } from 'react'
-import { Button } from '../../components/button/Button'
+import { Controller, useForm } from 'react-hook-form'
 import { BsTrash } from 'react-icons/bs'
 import { ToastContainer, toast } from 'react-toastify'
-import { ModalF } from '../../components/modals/modalForm/ModalF'
+import { Button } from '../../components/button/Button'
 import { Input } from '../../components/input/Input'
-import { Controller, useForm } from 'react-hook-form'
-import { API_BASE_URL_2 } from '../../constants/Constants'
+import { ModalF } from '../../components/modals/modalForm/ModalF'
 import { SelectForncedor } from '../../components/select/SelectForncedor'
+import { API_BASE_URL_2 } from '../../constants/Constants'
 import { colors } from '../../styles/tokens/colors'
+import * as S from './styles'
 
 interface IProdutos {
   id: string
@@ -45,6 +45,7 @@ export default function Produtos() {
   const [products, setProducts] = useState<IProdutos[]>([])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [search, setSearch] = useState('')
 
   const {
     register,
@@ -100,6 +101,11 @@ export default function Produtos() {
     }
   }
 
+  const filteredProducts =
+    search.length > 0
+      ? products.filter((product) => product.nome.includes(search))
+      : []
+
   useEffect(() => {
     handleProdutos()
   }, [loading])
@@ -107,6 +113,10 @@ export default function Produtos() {
   if (products.length === 0) {
     return <p>Nenhum usuario encontrado!</p>
   }
+
+  console.log(products.length)
+
+  console.log(search)
 
   return (
     <>
@@ -120,6 +130,22 @@ export default function Produtos() {
           color={`${colors.blue[500]}`}
         />
       </S.Container>
+      <>
+        <input
+          type="text"
+          placeholder="searc..."
+          name="search"
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
+          style={{
+            border: 'none',
+            outline: 'none',
+            padding: '5px',
+            borderRadius: '6px',
+            marginBottom: '5px',
+          }}
+        />
+      </>
       {products.length === 0 ? (
         <p>nenhum produto cadastrado!</p>
       ) : (
@@ -141,30 +167,65 @@ export default function Produtos() {
             </S.TableRow>
           </thead>
           <tbody>
-            {products.map((product) => (
-              <S.TableRow key={product.id}>
-                <S.TableCell>
-                  <input type="checkbox" style={{ cursor: 'pointer' }} />
-                </S.TableCell>
-                <S.TableCell>{product.nome}</S.TableCell>
-                <S.TableCell>{product.descricao}</S.TableCell>
-                <S.TableCell>R$ {product.preco}</S.TableCell>
-                {product.imagem === null ? (
-                  <S.TableCell>vazio</S.TableCell>
-                ) : (
-                  <S.TableCell>{product.imagem}</S.TableCell>
-                )}
-                <S.TableCell>{product.quantidade}</S.TableCell>
-                <S.TableCell>{product.Fornecedor.nome}</S.TableCell>
-                <S.TableCell>{product.tipo}</S.TableCell>
-                <S.TableCell>{product.codbarras}</S.TableCell>
-                <S.TableCell>
-                  <S.Trashbtn onClick={() => handleDeleteProducts(product.id)}>
-                    <BsTrash size={23} />
-                  </S.Trashbtn>
-                </S.TableCell>
-              </S.TableRow>
-            ))}
+            {search.length > 0 ? (
+              <>
+                {filteredProducts.map((product) => (
+                  <S.TableRow key={product.id}>
+                    <S.TableCell>
+                      <input type="checkbox" style={{ cursor: 'pointer' }} />
+                    </S.TableCell>
+                    <S.TableCell>{product.nome}</S.TableCell>
+                    <S.TableCell>{product.descricao}</S.TableCell>
+                    <S.TableCell>R$ {product.preco}</S.TableCell>
+                    {product.imagem === null ? (
+                      <S.TableCell>vazio</S.TableCell>
+                    ) : (
+                      <S.TableCell>{product.imagem}</S.TableCell>
+                    )}
+                    <S.TableCell>{product.quantidade}</S.TableCell>
+                    <S.TableCell>{product.Fornecedor.nome}</S.TableCell>
+                    <S.TableCell>{product.tipo}</S.TableCell>
+                    <S.TableCell>{product.codbarras}</S.TableCell>
+                    <S.TableCell>
+                      <S.Trashbtn
+                        onClick={() => handleDeleteProducts(product.id)}
+                      >
+                        <BsTrash size={23} />
+                      </S.Trashbtn>
+                    </S.TableCell>
+                  </S.TableRow>
+                ))}
+              </>
+            ) : (
+              <>
+                {products.map((product) => (
+                  <S.TableRow key={product.id}>
+                    <S.TableCell>
+                      <input type="checkbox" style={{ cursor: 'pointer' }} />
+                    </S.TableCell>
+                    <S.TableCell>{product.nome}</S.TableCell>
+                    <S.TableCell>{product.descricao}</S.TableCell>
+                    <S.TableCell>R$ {product.preco}</S.TableCell>
+                    {product.imagem === null ? (
+                      <S.TableCell>vazio</S.TableCell>
+                    ) : (
+                      <S.TableCell>{product.imagem}</S.TableCell>
+                    )}
+                    <S.TableCell>{product.quantidade}</S.TableCell>
+                    <S.TableCell>{product.Fornecedor.nome}</S.TableCell>
+                    <S.TableCell>{product.tipo}</S.TableCell>
+                    <S.TableCell>{product.codbarras}</S.TableCell>
+                    <S.TableCell>
+                      <S.Trashbtn
+                        onClick={() => handleDeleteProducts(product.id)}
+                      >
+                        <BsTrash size={23} />
+                      </S.Trashbtn>
+                    </S.TableCell>
+                  </S.TableRow>
+                ))}
+              </>
+            )}
           </tbody>
         </S.Table>
       )}

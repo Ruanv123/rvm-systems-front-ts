@@ -1,8 +1,8 @@
-import * as S from './styles'
+import { BsFillCheckCircleFill } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../../components/button/Button'
 import { colors } from '../../styles/tokens/colors'
-import { BsFillCheckCircleFill } from 'react-icons/bs'
+import * as S from './styles'
 
 export default function ResetPassConfirm() {
   const navigate = useNavigate()
@@ -20,7 +20,7 @@ export default function ResetPassConfirm() {
             size={320}
             color={`${colors.blue[500]}`}
             text="Login"
-            onClick={() => navigate('/login')}
+            onClick={() => navigate('/intranet')}
           />
         </S.Form>
       </S.Container>
