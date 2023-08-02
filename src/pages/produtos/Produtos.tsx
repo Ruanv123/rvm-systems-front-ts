@@ -1,3 +1,4 @@
+import { TrashIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -114,9 +115,9 @@ export default function Produtos() {
     return <p>Nenhum usuario encontrado!</p>
   }
 
-  console.log(products.length)
+  // console.log(products.length)
 
-  console.log(search)
+  // console.log(search)
 
   return (
     <>
@@ -130,7 +131,8 @@ export default function Produtos() {
           color={`${colors.blue[500]}`}
         />
       </S.Container>
-      <>
+
+      {/*  <>
         <input
           type="text"
           placeholder="searc..."
@@ -142,10 +144,9 @@ export default function Produtos() {
             outline: 'none',
             padding: '5px',
             borderRadius: '6px',
-            marginBottom: '5px',
           }}
         />
-      </>
+      </> */}
       {products.length === 0 ? (
         <p>nenhum produto cadastrado!</p>
       ) : (
@@ -219,7 +220,7 @@ export default function Produtos() {
                       <S.Trashbtn
                         onClick={() => handleDeleteProducts(product.id)}
                       >
-                        <BsTrash size={23} />
+                        <TrashIcon style={{ width: '23px' }} />
                       </S.Trashbtn>
                     </S.TableCell>
                   </S.TableRow>

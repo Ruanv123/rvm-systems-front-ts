@@ -1,6 +1,6 @@
+import { TrashIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { BsTrash } from 'react-icons/bs'
 import { ToastContainer, toast } from 'react-toastify'
 import { API_BASE_URL } from '../../constants/Constants'
 import { formatarData } from '../../utils/useFormatDate'
@@ -105,7 +105,7 @@ export default function Funcionarios() {
               <S.TableCell>{formatarData(user.updatedAt)}</S.TableCell>
               <S.TableCell>
                 <S.Trashbtn onClick={() => handleDeleteUser(user.id)}>
-                  <BsTrash size={23} />
+                  <TrashIcon style={{ width: '23px' }} />
                 </S.Trashbtn>
               </S.TableCell>
             </S.TableRow>

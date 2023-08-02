@@ -1,4 +1,4 @@
-import { BsTrash } from 'react-icons/bs'
+import { TrashIcon } from '@heroicons/react/24/outline'
 import { Button } from '../../components/button/Button'
 import { colors } from '../../styles/tokens/colors'
 import * as S from './styles'
@@ -49,7 +49,7 @@ export default function ContasAPagar() {
             <S.TableCell>27/07/23</S.TableCell>
             <S.TableCell>
               <S.Trashbtn>
-                <BsTrash size={23} />
+                <TrashIcon style={{ width: '23px' }} />
               </S.Trashbtn>
             </S.TableCell>
           </S.TableRow>

@@ -51,6 +51,11 @@ export const MenuRow = styled.div`
   align-items: center;
   gap: 15px;
   margin: 20px 0px;
+
+  svg {
+    width: 30px;
+    height: auto !important;
+  }
 `
 
 export const MenuText = styled(Link)`

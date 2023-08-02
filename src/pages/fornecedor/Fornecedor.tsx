@@ -1,7 +1,7 @@
+import { TrashIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { BsTrash } from 'react-icons/bs'
 import { ToastContainer, toast } from 'react-toastify'
 import { Button } from '../../components/button/Button'
 import { Input } from '../../components/input/Input'
@@ -153,7 +153,7 @@ export default function Fornecedor() {
                 <S.Trashbtn
                   onClick={() => handleDeleteFornecedor(fornecedor.id)}
                 >
-                  <BsTrash size={23} />
+                  <TrashIcon style={{ width: '23px' }} />
                 </S.Trashbtn>
               </S.TableCell>
             </S.TableRow>

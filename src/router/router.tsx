@@ -26,6 +26,7 @@ import Fornecedor from '../pages/fornecedor/Fornecedor'
 import Funcionarios from '../pages/funcionarios/Funcionarios'
 import Home from '../pages/home/Home'
 import Login from '../pages/login/Login'
+import Lojas from '../pages/lojas/Lojas'
 import PontoDigital from '../pages/pontoDigital/PontoDigital'
 import PrivacidadePage from '../pages/privacidade/PrivacidadePage'
 import Produtos from '../pages/produtos/Produtos'
@@ -143,6 +144,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/fornecedor',
         element: <Fornecedor />,
+      },
+      {
+        path: '/dashboard/lojas',
+        element: <Lojas />,
       },
       {
         path: '/dashboard/produtos',

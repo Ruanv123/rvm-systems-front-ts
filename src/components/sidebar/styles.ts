@@ -1,13 +1,18 @@
+import { Link } from 'react-router-dom'
 import { styled } from 'styled-components'
 import { colors } from '../../styles/tokens/colors'
-import { Link } from 'react-router-dom'
 import { typography } from '../../styles/tokens/typography'
 
 interface ISidebarProps {
   isopen: boolean
+  isActive: boolean
 }
 
-export const Sidebar = styled.div<ISidebarProps>`
+interface ISidebarOpem {
+  isopen: boolean
+}
+
+export const Sidebar = styled.div<ISidebarOpem>`
   background-color: ${colors.white};
   height: 100vh;
   box-sizing: border-box;
@@ -24,7 +29,7 @@ export const Sidebar = styled.div<ISidebarProps>`
   z-index: 999;
 `
 
-export const Button = styled.button<ISidebarProps>`
+export const Button = styled.button<ISidebarOpem>`
   background-color: transparent;
   border: none;
   padding: 10px 0px;
@@ -54,7 +59,8 @@ export const Content = styled.div`
 export const LinkContainer = styled(Link)<ISidebarProps>`
   text-align: center;
   overflow: hidden;
-  color: ${colors.gray[800]};
+  color: ${({ isActive }) =>
+    !isActive ? `${colors.gray[800]}` : `${colors.blue[600]};`};
   transition: 0.3s ease;
   display: flex;
   align-items: center;
@@ -66,13 +72,26 @@ export const LinkContainer = styled(Link)<ISidebarProps>`
   border-radius: 8px;
   margin: 5px 0px;
 
+  background-color: ${({ isActive }) =>
+    !isActive ? `transparent` : `${colors.blue[100]}`};
+
+  svg {
+    width: 30px;
+    height: auto;
+  }
+
+  &:active {
+    background-color: ${colors.blue[100]};
+    color: ${colors.blue[600]};
+  }
+
   &:hover {
     background-color: ${colors.blue[100]};
     color: ${colors.blue[600]};
   }
 `
 
-export const LinkContainerBtn = styled.button<ISidebarProps>`
+export const LinkContainerBtn = styled.button<ISidebarOpem>`
   text-align: center;
   overflow: hidden;
   color: ${colors.gray[800]};

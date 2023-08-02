@@ -1,6 +1,6 @@
+import { TrashIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { BsTrash } from 'react-icons/bs'
 import { ToastContainer } from 'react-toastify'
 import { API_BASE_URL_2 } from '../../constants/Constants'
 import { formatarData } from '../../utils/useFormatDate'
@@ -117,16 +117,16 @@ export default function Clientes() {
                 {/* {cliente.createdAt}{' '} */}
                 {cliente.createdAt !== undefined
                   ? formatarData(cliente.createdAt)
-                  : []}
+                  : cliente.createdAt}
               </S.TableCell>
               <S.TableCell>
                 {cliente.updatedAt !== undefined
                   ? formatarData(cliente.updatedAt)
-                  : []}
+                  : cliente.updatedAt}
               </S.TableCell>
               <S.TableCell>
                 <S.Trashbtn>
-                  <BsTrash size={23} />
+                  <TrashIcon style={{ width: '23px' }} />
                 </S.Trashbtn>
               </S.TableCell>
             </S.TableRow>

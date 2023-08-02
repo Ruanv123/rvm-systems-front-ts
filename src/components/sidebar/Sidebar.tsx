@@ -1,20 +1,23 @@
-import * as S from './styles'
 import { useState } from 'react'
+import * as S from './styles'
 
-import { GoHome } from 'react-icons/go'
 import {
-  BsArrowRightSquare,
-  BsArrowLeftSquare,
-  BsBox,
-  BsShopWindow,
-} from 'react-icons/bs'
-import { MdOutlineAnalytics } from 'react-icons/md'
-import { PiUsers, PiGear, PiUserFocusBold } from 'react-icons/pi'
-import { IoLogOutOutline, IoTimerOutline } from 'react-icons/io5'
-import { TbMoneybag } from 'react-icons/tb'
-import { useNavigate } from 'react-router-dom'
+  ArchiveBoxIcon,
+  ArrowsRightLeftIcon,
+  BuildingStorefrontIcon,
+  ClockIcon,
+  Cog6ToothIcon,
+  HomeIcon,
+  TruckIcon,
+  UserGroupIcon,
+  UsersIcon,
+  WalletIcon,
+} from '@heroicons/react/24/outline'
+import { BsArrowLeftSquare, BsArrowRightSquare } from 'react-icons/bs'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export const Sidebar = () => {
+  const { pathname } = useLocation()
   const navigate = useNavigate()
   const [sidebarOpen, setSidebarOpen] = useState(true)
 
@@ -48,8 +51,12 @@ export const Sidebar = () => {
             )}
           </S.Logo> */}
           <S.Divider />
-          <S.LinkContainer to="/dashboard/" isopen={sidebarOpen}>
-            <GoHome size={30} title="Home" />
+          <S.LinkContainer
+            to="/dashboard/"
+            isActive={pathname === '/dashboard/'}
+            isopen={sidebarOpen}
+          >
+            <HomeIcon title="Home" />
             {!sidebarOpen && <span>Home</span>}
           </S.LinkContainer>
 
@@ -58,44 +65,82 @@ export const Sidebar = () => {
             {!sidebarOpen && <span>Relatórios</span>}
           </S.LinkContainer> */}
 
-          <S.LinkContainer to="/dashboard/clientes" isopen={sidebarOpen}>
-            <PiUsers size={30} title="Clientes" />
+          <S.LinkContainer
+            to="/dashboard/clientes"
+            isopen={sidebarOpen}
+            isActive={pathname === '/dashboard/clientes'}
+          >
+            <UsersIcon title="Clientes" />
             {!sidebarOpen && <span>Clientes</span>}
           </S.LinkContainer>
 
-          <S.LinkContainer to="/dashboard/produtos" isopen={sidebarOpen}>
-            <BsBox size={30} title="Products" />
+          <S.LinkContainer
+            to="/dashboard/produtos"
+            isActive={pathname === '/dashboard/produtos'}
+            isopen={sidebarOpen}
+          >
+            <ArchiveBoxIcon title="Products" />
             {!sidebarOpen && <span>Products</span>}
           </S.LinkContainer>
 
-          <S.LinkContainer to="/dashboard/fornecedor" isopen={sidebarOpen}>
-            <BsShopWindow size={30} title="Fornecedor" />
+          <S.LinkContainer
+            to="/dashboard/fornecedor"
+            isActive={pathname === '/dashboard/fornecedor'}
+            isopen={sidebarOpen}
+          >
+            <TruckIcon title="Fornecedor" />
             {!sidebarOpen && <span>Fornecedor</span>}
           </S.LinkContainer>
 
-          <S.LinkContainer to="/dashboard/financas" isopen={sidebarOpen}>
-            <TbMoneybag size={30} title="Finanças" />
+          <S.LinkContainer
+            to="/dashboard/lojas"
+            isActive={pathname === '/dashboard/lojas'}
+            isopen={sidebarOpen}
+          >
+            <BuildingStorefrontIcon title="Lojas" />
+            {!sidebarOpen && <span>Lojas</span>}
+          </S.LinkContainer>
+
+          <S.LinkContainer
+            to="/dashboard/financas"
+            isActive={pathname === '/dashboard/financas'}
+            isopen={sidebarOpen}
+          >
+            <WalletIcon title="Finanças" />
             {!sidebarOpen && <span>Finanças</span>}
           </S.LinkContainer>
 
-          <S.LinkContainer to="/dashboard/funcionarios" isopen={sidebarOpen}>
-            <PiUserFocusBold size={30} title="Funcionários" />
+          <S.LinkContainer
+            to="/dashboard/funcionarios"
+            isActive={pathname === '/dashboard/funcionarios'}
+            isopen={sidebarOpen}
+          >
+            <UserGroupIcon title="Funcionários" />
             {!sidebarOpen && <span>Funcionários</span>}
           </S.LinkContainer>
-          <S.LinkContainer to="/dashboard/ponto" isopen={sidebarOpen}>
-            <IoTimerOutline size={30} title="Ponto Digital" />
+          <S.LinkContainer
+            to="/dashboard/ponto"
+            isActive={pathname === '/dashboard/ponto'}
+            isopen={sidebarOpen}
+          >
+            <ClockIcon title="Ponto Digital" />
             {!sidebarOpen && <span>Ponto Digital</span>}
           </S.LinkContainer>
 
           <S.Divider />
         </S.Content>
         <S.Footer>
-          <S.LinkContainer to={`/dashboard/settings/`} isopen={sidebarOpen}>
-            <PiGear size={30} title="Settings" />
+          <S.LinkContainer
+            to={`/dashboard/settings/`}
+            isActive={pathname === '/dashboard/settings/'}
+            isopen={sidebarOpen}
+          >
+            <Cog6ToothIcon title="Settings" />
             {!sidebarOpen && <span>Settings</span>}
           </S.LinkContainer>
           <S.LinkContainerBtn onClick={disconnect} isopen={sidebarOpen}>
-            <IoLogOutOutline size={30} title="Logout" />
+            {/* <IoLogOutOutline size={30} title="Logout" /> */}
+            <ArrowsRightLeftIcon title="Logout" />
             {!sidebarOpen && <span>Logout</span>}
           </S.LinkContainerBtn>
         </S.Footer>

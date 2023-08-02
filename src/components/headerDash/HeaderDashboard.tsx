@@ -1,5 +1,13 @@
+import {
+  ArrowLeftOnRectangleIcon,
+  BellIcon,
+  Cog6ToothIcon,
+  DocumentIcon,
+  Squares2X2Icon,
+  UserIcon,
+} from '@heroicons/react/24/outline'
 import * as Popover from '@radix-ui/react-popover'
-import { GoBell } from 'react-icons/go'
+
 import { useNavigate } from 'react-router-dom'
 import Logo from '../../assets/logo.png'
 import { useUser } from '../../layout/dashboard/Dashboard'
@@ -31,7 +39,7 @@ export const HeaderDashboard = () => {
         {/* Popover Notificacao */}
         <Popover.Root>
           <S.PopTrigger>
-            <GoBell size={22} />
+            <BellIcon style={{ width: '30px', height: '30px' }} />
           </S.PopTrigger>
           <Popover.Portal>
             <S.PopContent>
@@ -49,7 +57,7 @@ export const HeaderDashboard = () => {
           <Popover.Portal>
             <S.PopContent>
               <S.MenuRow>
-                <svg
+                {/* <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -71,12 +79,13 @@ export const HeaderDashboard = () => {
                       <rect width="24" height="24" fill="white" />
                     </clipPath>
                   </defs>
-                </svg>
+                </svg> */}
+                <UserIcon />
 
                 <S.MenuText to="/dashboard/settings/">Perfil</S.MenuText>
               </S.MenuRow>
               <S.MenuRow>
-                <svg
+                {/*  <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -106,11 +115,12 @@ export const HeaderDashboard = () => {
                       <rect width="24" height="24" fill="white" />
                     </clipPath>
                   </defs>
-                </svg>
+                </svg> */}
+                <Squares2X2Icon />
                 <S.MenuText to="">Integrations</S.MenuText>
               </S.MenuRow>
               <S.MenuRow>
-                <svg
+                {/* <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -128,13 +138,15 @@ export const HeaderDashboard = () => {
                       <rect width="24" height="24" fill="white" />
                     </clipPath>
                   </defs>
-                </svg>
+                </svg> */}
+
+                <Cog6ToothIcon />
                 <S.MenuText to="/dashboard/settings/">Settings</S.MenuText>
               </S.MenuRow>
               <S.Line />
               {/* fill={colors.gray[900]} */}
               <S.MenuRow>
-                <svg
+                {/* <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -152,7 +164,9 @@ export const HeaderDashboard = () => {
                       <rect width="24" height="24" fill="white" />
                     </clipPath>
                   </defs>
-                </svg>
+                </svg> */}
+
+                <DocumentIcon />
 
                 <S.MenuText to="">Guia de Uso</S.MenuText>
               </S.MenuRow>
@@ -184,12 +198,11 @@ export const HeaderDashboard = () => {
                     </clipPath>
                   </defs>
                 </svg>
-
                 <S.MenuText to="">Central de Ajuda</S.MenuText>
               </S.MenuRow>
               <S.Line />
               <S.MenuRow>
-                <svg
+                {/* <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -211,7 +224,8 @@ export const HeaderDashboard = () => {
                       <rect width="24" height="24" fill="white" />
                     </clipPath>
                   </defs>
-                </svg>
+                </svg> */}
+                <ArrowLeftOnRectangleIcon />
                 <S.MenuText to="" onClick={disconnect}>
                   Logout
                 </S.MenuText>

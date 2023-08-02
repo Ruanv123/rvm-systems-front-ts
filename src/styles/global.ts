@@ -32,6 +32,10 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
+  /* a:visited {
+    color: inherit;
+  } */
+
   body {
     font-family: 'Rubik', sans-serif;
   }
