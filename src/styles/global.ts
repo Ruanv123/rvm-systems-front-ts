@@ -37,7 +37,8 @@ export const GlobalStyles = createGlobalStyle`
   } */
 
   body {
-    font-family: 'Rubik', sans-serif;
+     font-family: 'Rubik', sans-serif; 
+     /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",  */
   }
 
   ul,

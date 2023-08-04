@@ -48,6 +48,8 @@ export const TableCell = styled.td`
 
 export const Trashbtn = styled.button`
   background-color: transparent;
+
+  color: ${colors.red[500]};
 `
 
 export const Space = styled.div`

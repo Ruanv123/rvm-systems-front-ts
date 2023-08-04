@@ -103,7 +103,12 @@ export const Sidebar = () => {
 
           <S.LinkContainer
             to="/dashboard/financas"
-            isActive={pathname === '/dashboard/financas'}
+            isActive={
+              pathname === '/dashboard/financas' ||
+              pathname === '/dashboard/financas/contas-a-pagar' ||
+              pathname === '/dashboard/financas/contas-a-receber' ||
+              pathname === '/dashboard/financas/controle-de-caixa'
+            }
             isopen={sidebarOpen}
           >
             <WalletIcon title="Finanças" />

@@ -1,6 +1,6 @@
+import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ReactNode } from 'react'
 import * as S from './styles'
-import { MdOutlineClear } from 'react-icons/md'
 
 interface IModalProps {
   onClose: () => void
@@ -14,7 +14,7 @@ export const ModalF = ({ onClose, children }: IModalProps) => {
         <S.ModalContent>
           <div>
             <S.CloseBtn onClick={onClose}>
-              <MdOutlineClear />
+              <XMarkIcon />
             </S.CloseBtn>
           </div>
           <S.ModalContainer>{children}</S.ModalContainer>

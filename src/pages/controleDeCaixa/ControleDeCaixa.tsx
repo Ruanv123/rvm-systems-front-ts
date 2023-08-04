@@ -1,11 +1,9 @@
 import { TrashIcon } from '@heroicons/react/24/outline'
-import { useState } from 'react'
 import { Button } from '../../components/button/Button.tsx'
 import { colors } from '../../styles/tokens/colors.ts'
 import * as S from './styles.ts'
 
 export default function ControleDeCaixa() {
-  const [checked, setChecked] = useState<boolean>(false)
   return (
     <>
       <S.Voltar to="/dashboard/financas">Voltar</S.Voltar>
@@ -31,11 +29,7 @@ export default function ControleDeCaixa() {
         <thead>
           <S.TableRow>
             <S.TableHCell>
-              <input
-                type="checkbox"
-                checked={checked}
-                onClick={(e) => setChecked(e.target.value)}
-              />
+              <input type="checkbox" />
             </S.TableHCell>
             <S.TableHCell>Dia</S.TableHCell>
             <S.TableHCell>Histórico</S.TableHCell>
@@ -48,12 +42,7 @@ export default function ControleDeCaixa() {
         <tbody>
           <S.TableRow>
             <S.TableCell>
-              <input
-                type="checkbox"
-                style={{ cursor: 'pointer' }}
-                checked={checked}
-                onClick={(e) => setChecked(e.target.value)}
-              />
+              <input type="checkbox" style={{ cursor: 'pointer' }} />
             </S.TableCell>
             <S.TableCell>25/07/23</S.TableCell>
             <S.TableCell>Specialized</S.TableCell>

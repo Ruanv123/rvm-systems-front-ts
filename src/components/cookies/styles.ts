@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom'
 import { styled } from 'styled-components'
 import { colors } from '../../styles/tokens/colors'
-import { Link } from 'react-router-dom'
 
 export const CookiesContainer = styled.div`
   max-width: 1200px;
@@ -52,6 +52,9 @@ export const TextLink = styled(Link)`
   display: flex;
   align-items: center;
   gap: 10px;
+  svg {
+    width: 26px;
+  }
 `
 
 export const Button = styled.button`

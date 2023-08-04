@@ -40,6 +40,10 @@ interface IFormData {
 export default function Fornecedor() {
   const [fornecedores, setFornecedores] = useState<IForncedores[]>([])
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [ischeckedAll, setIsCheckedAll] = useState(false)
+  const [ischeckedItems, setIsCheckedItems] = useState<{
+    [key: number]: boolean
+  }>({})
   const [loading, setLoading] = useState(false)
 
   const {
@@ -95,6 +99,23 @@ export default function Fornecedor() {
     }
   }
 
+  const handleMasterCheckboxChange = () => {
+    setIsCheckedAll(!ischeckedAll)
+    const newCheckedItems: { [key: number]: boolean } = {}
+    fornecedores.forEach((_, index) => {
+      newCheckedItems[index] = !ischeckedAll
+    })
+    setIsCheckedItems(newCheckedItems)
+  }
+
+  const handleItemCheckboxChange = (index: number) => {
+    setIsCheckedItems({
+      ...ischeckedItems,
+      [index]: !ischeckedItems[index],
+    })
+    setIsCheckedAll(false)
+  }
+
   useEffect(() => {
     handleFornecedores()
   }, [loading])
@@ -115,7 +136,11 @@ export default function Fornecedor() {
         <thead>
           <S.TableRow>
             <S.TableHCell>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={ischeckedAll}
+                onChange={handleMasterCheckboxChange}
+              />
             </S.TableHCell>
             <S.TableHCell>Nome</S.TableHCell>
             <S.TableHCell>Email</S.TableHCell>
@@ -129,11 +154,13 @@ export default function Fornecedor() {
           </S.TableRow>
         </thead>
         <tbody>
-          {fornecedores.map((fornecedor) => (
+          {fornecedores.map((fornecedor, index) => (
             <S.TableRow key={fornecedor.id}>
               <S.TableCell key={fornecedor.id}>
                 <input
                   type="checkbox"
+                  checked={ischeckedItems[index] || false}
+                  onChange={() => handleItemCheckboxChange(index)}
                   style={{ cursor: 'pointer', margin: '5px' }}
                 />
               </S.TableCell>

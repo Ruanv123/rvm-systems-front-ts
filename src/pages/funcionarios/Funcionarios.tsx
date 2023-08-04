@@ -23,6 +23,10 @@ interface IUsers {
 export default function Funcionarios() {
   const [users, setUsers] = useState<IUsers[]>([])
   const [loading, setLoading] = useState(false)
+  const [ischeckedAll, setIsCheckedAll] = useState(false)
+  const [ischeckedItems, setIsCheckedItems] = useState<{
+    [key: number]: boolean
+  }>({})
 
   const token: string | null = GetToken('token')
 
@@ -60,6 +64,23 @@ export default function Funcionarios() {
     }
   }
 
+  const handleMasterCheckboxChange = () => {
+    setIsCheckedAll(!ischeckedAll)
+    const newCheckedItems: { [key: number]: boolean } = {}
+    users.forEach((_, index) => {
+      newCheckedItems[index] = !ischeckedAll
+    })
+    setIsCheckedItems(newCheckedItems)
+  }
+
+  const handleItemCheckboxChange = (index: number) => {
+    setIsCheckedItems({
+      ...ischeckedItems,
+      [index]: !ischeckedItems[index],
+    })
+    setIsCheckedAll(false)
+  }
+
   if (users.length === 0) {
     return <p>Nenhum usuario encontrado!</p>
   }
@@ -74,7 +95,12 @@ export default function Funcionarios() {
         <thead>
           <S.TableRow>
             <S.TableHCell>
-              <input type="checkbox" style={{ cursor: 'pointer' }} />
+              <input
+                type="checkbox"
+                style={{ cursor: 'pointer' }}
+                checked={ischeckedAll}
+                onChange={handleMasterCheckboxChange}
+              />
             </S.TableHCell>
             <S.TableHCell>Id</S.TableHCell>
             <S.TableHCell>Nome</S.TableHCell>
@@ -87,10 +113,15 @@ export default function Funcionarios() {
           </S.TableRow>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <S.TableRow key={user.id}>
+          {users.map((user, index) => (
+            <S.TableRow key={index}>
               <S.TableCell>
-                <input type="checkbox" style={{ cursor: 'pointer' }} />
+                <input
+                  type="checkbox"
+                  style={{ cursor: 'pointer' }}
+                  checked={ischeckedItems[index] || false}
+                  onChange={() => handleItemCheckboxChange(index)}
+                />
               </S.TableCell>
               <S.TableCell>{user.id}</S.TableCell>
               <S.TableCell>{user.name}</S.TableCell>

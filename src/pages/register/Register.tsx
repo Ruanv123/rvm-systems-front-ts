@@ -37,7 +37,7 @@ export default function Register() {
         password: data.password,
       })
       toast.success('Usuario criado com sucesso!')
-      navigate('/login')
+      navigate('/intranet')
     } catch (error) {
       toast.error('Ocorreu um error: ' + error)
     }

@@ -1,6 +1,6 @@
-import * as S from './styles'
-import { colors } from '../../styles/tokens/colors'
 import { BiLineChart, BiLineChartDown, BiSitemap } from 'react-icons/bi'
+import { colors } from '../../styles/tokens/colors'
+import * as S from './styles'
 
 export default function Financas() {
   return (

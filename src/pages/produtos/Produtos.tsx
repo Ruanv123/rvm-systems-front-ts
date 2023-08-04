@@ -2,7 +2,6 @@ import { TrashIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { BsTrash } from 'react-icons/bs'
 import { ToastContainer, toast } from 'react-toastify'
 import { Button } from '../../components/button/Button'
 import { Input } from '../../components/input/Input'
@@ -10,6 +9,7 @@ import { ModalF } from '../../components/modals/modalForm/ModalF'
 import { SelectForncedor } from '../../components/select/SelectForncedor'
 import { API_BASE_URL_2 } from '../../constants/Constants'
 import { colors } from '../../styles/tokens/colors'
+
 import * as S from './styles'
 
 interface IProdutos {
@@ -46,7 +46,11 @@ export default function Produtos() {
   const [products, setProducts] = useState<IProdutos[]>([])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState<string>('')
+  const [ischeckedAll, setIsCheckedAll] = useState(false)
+  const [ischeckedItems, setIsCheckedItems] = useState<{
+    [key: number]: boolean
+  }>({})
 
   const {
     register,
@@ -107,6 +111,22 @@ export default function Produtos() {
       ? products.filter((product) => product.nome.includes(search))
       : []
 
+  const handleMasterCheckboxChange = () => {
+    setIsCheckedAll(!ischeckedAll)
+    const newCheckedItems: { [key: number]: boolean } = {}
+    products.forEach((_, index) => {
+      newCheckedItems[index] = !ischeckedAll
+    })
+    setIsCheckedItems(newCheckedItems)
+  }
+
+  const handleItemCheckboxChange = (index: number) => {
+    setIsCheckedItems({
+      ...ischeckedItems,
+      [index]: !ischeckedItems[index],
+    })
+    setIsCheckedAll(false)
+  }
   useEffect(() => {
     handleProdutos()
   }, [loading])
@@ -132,7 +152,7 @@ export default function Produtos() {
         />
       </S.Container>
 
-      {/*  <>
+      <>
         <input
           type="text"
           placeholder="searc..."
@@ -146,7 +166,7 @@ export default function Produtos() {
             borderRadius: '6px',
           }}
         />
-      </> */}
+      </>
       {products.length === 0 ? (
         <p>nenhum produto cadastrado!</p>
       ) : (
@@ -154,7 +174,12 @@ export default function Produtos() {
           <thead>
             <S.TableRow>
               <S.TableHCell>
-                <input type="checkbox" style={{ cursor: 'pointer' }} />
+                <input
+                  type="checkbox"
+                  style={{ cursor: 'pointer' }}
+                  checked={ischeckedAll}
+                  onChange={handleMasterCheckboxChange}
+                />
               </S.TableHCell>
               <S.TableHCell>Nome</S.TableHCell>
               <S.TableHCell>Descrição</S.TableHCell>
@@ -170,10 +195,15 @@ export default function Produtos() {
           <tbody>
             {search.length > 0 ? (
               <>
-                {filteredProducts.map((product) => (
-                  <S.TableRow key={product.id}>
+                {filteredProducts.map((product, index) => (
+                  <S.TableRow key={index}>
                     <S.TableCell>
-                      <input type="checkbox" style={{ cursor: 'pointer' }} />
+                      <input
+                        type="checkbox"
+                        style={{ cursor: 'pointer' }}
+                        checked={ischeckedItems[index] || false}
+                        onChange={() => handleItemCheckboxChange(index)}
+                      />
                     </S.TableCell>
                     <S.TableCell>{product.nome}</S.TableCell>
                     <S.TableCell>{product.descricao}</S.TableCell>
@@ -191,7 +221,7 @@ export default function Produtos() {
                       <S.Trashbtn
                         onClick={() => handleDeleteProducts(product.id)}
                       >
-                        <BsTrash size={23} />
+                        <TrashIcon />
                       </S.Trashbtn>
                     </S.TableCell>
                   </S.TableRow>
@@ -199,10 +229,15 @@ export default function Produtos() {
               </>
             ) : (
               <>
-                {products.map((product) => (
-                  <S.TableRow key={product.id}>
+                {products.map((product, index) => (
+                  <S.TableRow key={index}>
                     <S.TableCell>
-                      <input type="checkbox" style={{ cursor: 'pointer' }} />
+                      <input
+                        type="checkbox"
+                        style={{ cursor: 'pointer' }}
+                        checked={ischeckedItems[index] || false}
+                        onChange={() => handleItemCheckboxChange(index)}
+                      />
                     </S.TableCell>
                     <S.TableCell>{product.nome}</S.TableCell>
                     <S.TableCell>{product.descricao}</S.TableCell>

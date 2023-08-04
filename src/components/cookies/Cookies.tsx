@@ -1,7 +1,6 @@
+import { ArrowRightCircleIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 import * as S from './styles'
-
-import { MdOutlineArrowCircleRight } from 'react-icons/md'
 
 export const Cookies = () => {
   const [aceito, setAceito] = useState(false)
@@ -36,7 +35,7 @@ export const Cookies = () => {
               Utilizamos cookies para personalizar a sua experiência
             </S.TextContent>
             <S.TextLink to="/">
-              Política de Cookies <MdOutlineArrowCircleRight size={20} />
+              Política de Cookies <ArrowRightCircleIcon />
             </S.TextLink>
           </S.Content>
           <S.Buttons>
